@@ -15,87 +15,58 @@
     <title>Recipe App</title>
   </head>
   <body>
+    <!-- header starting area -->
     <header class="header">
-      <svg class="icon icon-heart-outlined">
-        <use xlink:href="./sprite.svg#icon-heart-outlined"></use>
-      </svg>
+      <button class="header__fav-button noSelect">
+        <svg class="icon header__icon-heart-outlined ">
+          <use xlink:href="./sprite.svg#icon-heart-outlined"></use>
+        </svg>
+      </button>
+      
+      <input type="text" class="header__search-input" placeholder="O que busca?" />
 
-      <input type="text" class="search-input" placeholder="Receitas?" />
-
-      <svg class="icon icon-magnifying-glass">
-        <use xlink:href="./sprite.svg#icon-magnifying-glass"></use>
-      </svg>
+      <button class="header__search-button noSelect">
+        <svg class="icon header__icon-magnifying-glass">
+          <use xlink:href="./sprite.svg#icon-magnifying-glass"></use>
+        </svg>
+      </button>
     </header>
 
+    <!-- fav section starting area -->
     <section class="fav-section">
-      <div class="recipe-container">
-        <div class="recipe-image-container">
+      <div class="fav-section__recipe-container noSelect">
+        <div class="fav-section__recipe-image-container">
           <img
             src="./bread-image.jpg"
-            class="recipe-image"
+            class="fav-section__recipe-image"
             alt="Foto da receita"
           />
-        </div>
-        <span class="recipe-name">Pão</span>
-      </div>
 
-      <div class="recipe-container">
-        <div class="recipe-image-container">
-          <img
-            src="./bread-image.jpg"
-            class="recipe-image"
-            alt="Foto da receita"
-          />
+          <button class="fav-section__remove-fav-button noSelect">
+            <svg class="icon fav-section__remove-fav-icon">
+              <use xlink:href="./sprite.svg#icon-cross"></use>
+            </svg>
+          </button>
         </div>
-        <span class="recipe-name">Pão</span>
-      </div>
-
-      <div class="recipe-container">
-        <div class="recipe-image-container">
-          <img
-            src="./bread-image.jpg"
-            class="recipe-image"
-            alt="Foto da receita"
-          />
-        </div>
-        <span class="recipe-name">Pão</span>
-      </div>
-
-      <div class="recipe-container">
-        <div class="recipe-image-container">
-          <img
-            src="./bread-image.jpg"
-            class="recipe-image"
-            alt="Foto da receita"
-          />
-        </div>
-        <span class="recipe-name">Pão</span>
-      </div>
-
-      <div class="recipe-container">
-        <div class="recipe-image-container">
-          <img
-            src="./bread-image.jpg"
-            class="recipe-image"
-            alt="Foto da receita"
-          />
-        </div>
-        <span class="recipe-name">Pão</span>
+        <span class="fav-section__recipe-name">Bread</span>
       </div>
     </section>
 
-    <section class="custom-section">
+    <!-- main section starting area -->
+    <section class="main-section">
       <div class="custom-card">
-        <div class="custom-text-container">
-          <h2 class="secondary-heading">Personalize</h2>
-          <span class="custom-text">Suas recomendações</span>
+        <div class="custom-card__text-container">
+          <h2 class="custom-card__heading">Personalize</h2>
+          <span class="custom-card__text">Suas recomendações</span>
         </div>
 
-        <svg class="icon icon-cross">
-          <use xlink:href="./sprite.svg#icon-cross"></use>
-        </svg>
+        <button class="custom-card__close-button noSelect">
+          <svg class="icon custom-card__close-icon">
+            <use xlink:href="./sprite.svg#icon-cross"></use>
+          </svg>
+        </button>
 
-        <button class="custom-button">Comece personalizando</button>
+        <button class="custom-card__start-button noSelect">Comece a personalizar</button>
       </div>
 
       <!-- <div class="random-recipe-card">
