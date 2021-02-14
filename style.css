@@ -171,6 +171,27 @@ body {
     font-weight: 700;
   }
 
+  .fav-section__message-container {
+    margin: auto;
+  }
+
+  .fav-section__message-text {
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+
+  .fav-section__message-icon {
+    height: 1.8rem;
+    width: 1.8rem;
+    fill: #536472;
+    margin-bottom: -3px;
+    margin-left: 3px;
+    opacity: 0;
+
+    animation: fillRedEmoji 10s cubic-bezier(0.17, 0.67, 0.92, 0.06) infinite;
+    animation-delay: 1s;
+  }
+
   /**********************************/
   /* MAIN SECTION */
   /**********************************/
@@ -287,5 +308,15 @@ body {
     border-left-color: #9695ed;
     border-top-color: #9695ed;
     border-right-color: #9695ed;
+  }
+}
+
+@keyframes fillRedEmoji {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }
