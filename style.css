@@ -188,7 +188,7 @@ body {
     margin-left: 3px;
     opacity: 0;
 
-    animation: fillRedEmoji 10s cubic-bezier(0.17, 0.67, 0.92, 0.06) infinite;
+    animation: opacityEmoji 10s cubic-bezier(0.17, 0.67, 0.92, 0.06) infinite;
     animation-delay: 1s;
   }
 
@@ -200,7 +200,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 2rem 0;
+    margin: 2rem 0 0 0;
   }
 
   /* CUSTOM CARD */
@@ -355,6 +355,38 @@ body {
     font-weight: 600;
     color: #aaa;
   }
+
+  .main-section__search-message {
+    width: 31rem;
+    margin: 4rem 0;
+    text-align: center;
+  }
+
+  .search-message__text {
+    font-size: 1.4rem;
+    font-weight: 400;
+  }
+
+  .search-message__icon-happy {
+    width: 2rem;
+    height: 2rem;
+    fill: #536472;
+    opacity: 0;
+    margin-bottom: -5px;
+    margin-left: 5px;
+    animation: opacityEmoji 5s cubic-bezier(0.17, 0.67, 0.92, 0.06) infinite;
+    animation-delay: 1s;
+  }
+
+  /**********************************/
+  /* FOOTER */
+  /**********************************/
+  .footer {
+    width: 100%;
+    height: 12rem;
+    background-color: #fafafa;
+    border-top: 3px solid #f5f5f5;
+  }
 }
 
 /**********************************/
@@ -384,7 +416,7 @@ body {
   }
 }
 
-@keyframes fillRedEmoji {
+@keyframes opacityEmoji {
   from {
     opacity: 0;
   }
