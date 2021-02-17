@@ -297,6 +297,7 @@ body {
 
   .random-recipe__image-container {
     height: 80%;
+    overflow: hidden;
   }
 
   .random-recipe__info {
@@ -309,6 +310,12 @@ body {
   .random-recipe__image {
     width: 100%;
     height: 100%;
+    transform: scale(1.1);
+    transition: transform 0.5s;
+  }
+
+  .random-recipe__image:active {
+    transform: scale(1);
   }
 
   .random-recipe__name {
@@ -347,7 +354,7 @@ body {
     padding: 0.5rem 1rem;
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
   }
 
   .random-recipe__text {
@@ -386,6 +393,19 @@ body {
     height: 12rem;
     background-color: #fafafa;
     border-top: 3px solid #f5f5f5;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footer__copy-text {
+    width: 31rem;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #777;
+    text-align: center;
   }
 }
 
