@@ -15,11 +15,19 @@
     <title>Recipe App</title>
   </head>
   <body>
+    <!-- floating icons area -->
+    <div class="create-recipe">
+      <button class="create-recipe__button">
+        <svg class="icon create-recipe__icon">
+          <use xlink:href="./sprite.svg#icon-plus"></use>
+        </svg>
+      </button>
+    </div>
     <!-- header starting area -->
     <header class="header">
       <button class="header__fav-button noSelect">
         <svg class="icon header__icon-heart-outlined">
-          <use xlink:href="./sprite.svg#icon-heart-outlined"></use>
+          <use xlink:href="./sprite.svg#icon-list"></use>
         </svg>
       </button>
 
@@ -174,6 +182,102 @@
         </div>
       </div>
 
+      <div class="random-recipe">
+        <div class="random-recipe__image-container">
+          <img
+            src="./bread-image.jpg"
+            class="random-recipe__image"
+            alt="Foto da receita"
+          />
+        </div>
+
+        <div class="random-recipe__info">
+          <span class="random-recipe__name">Camarão</span>
+
+          <button class="random-recipe__fav-button noSelect">
+            <svg class="icon random-recipe__icon-heart">
+              <use xlink:href="./sprite.svg#icon-heart"></use>
+            </svg>
+          </button>
+        </div>
+
+        <!-- <div class="random-recipe__daily-text">
+          <span class="random-recipe__text">Receita do dia</span>
+        </div> -->
+      </div>
+
+      <div class="random-recipe">
+        <div class="random-recipe__image-container">
+          <img
+            src="./bread-image.jpg"
+            class="random-recipe__image"
+            alt="Foto da receita"
+          />
+        </div>
+
+        <div class="random-recipe__info">
+          <span class="random-recipe__name">Camarão</span>
+
+          <button class="random-recipe__fav-button noSelect">
+            <svg class="icon random-recipe__icon-heart">
+              <use xlink:href="./sprite.svg#icon-heart"></use>
+            </svg>
+          </button>
+        </div>
+
+        <!-- <div class="random-recipe__daily-text">
+          <span class="random-recipe__text">Receita do dia</span>
+        </div> -->
+      </div>
+
+      <div class="random-recipe">
+        <div class="random-recipe__image-container">
+          <img
+            src="./bread-image.jpg"
+            class="random-recipe__image"
+            alt="Foto da receita"
+          />
+        </div>
+
+        <div class="random-recipe__info">
+          <span class="random-recipe__name">Camarão</span>
+
+          <button class="random-recipe__fav-button noSelect">
+            <svg class="icon random-recipe__icon-heart">
+              <use xlink:href="./sprite.svg#icon-heart"></use>
+            </svg>
+          </button>
+        </div>
+
+        <!-- <div class="random-recipe__daily-text">
+          <span class="random-recipe__text">Receita do dia</span>
+        </div> -->
+      </div>
+
+      <div class="random-recipe">
+        <div class="random-recipe__image-container">
+          <img
+            src="./bread-image.jpg"
+            class="random-recipe__image"
+            alt="Foto da receita"
+          />
+        </div>
+
+        <div class="random-recipe__info">
+          <span class="random-recipe__name">Camarão</span>
+
+          <button class="random-recipe__fav-button noSelect">
+            <svg class="icon random-recipe__icon-heart">
+              <use xlink:href="./sprite.svg#icon-heart"></use>
+            </svg>
+          </button>
+        </div>
+
+        <!-- <div class="random-recipe__daily-text">
+          <span class="random-recipe__text">Receita do dia</span>
+        </div> -->
+      </div>
+
       <div class="main-section__search-message search-message">
         <span class="search-message__text"
           >Comece buscando por alguma receita ou ingrediente!</span
@@ -185,7 +289,7 @@
     </section>
 
     <!-- nav starting area -->
-    <nav class="fav-navigation">
+    <!-- <nav class="fav-navigation">
       <header class="fav-navigation__header">
         <h3 class="terciary-heading">Suas receitas</h3>
 
@@ -196,8 +300,17 @@
         </button>
       </header>
 
-      <!-- nav section starting area -->
-      <section class="fav-navigation__nav-section nav-section">
+      nav section starting area
+      <section class="nav-section">
+        <div class="nav-section__message-container">
+          <span class="nav-section__message-text"
+            >Você não enviou receitas ainda</span
+          >
+          <svg class="icon nav-section__message-icon">
+            <use xlink:href="./sprite.svg#icon-emoji-sad"></use>
+          </svg>
+        </div>
+
         <div class="nav-section__recipe-container">
           <div class="nav-section__image-container">
             <img
@@ -212,152 +325,8 @@
             <p class="nav-section__recipe-description">Feito com fermento</p>
           </div>
         </div>
-
-        <div class="nav-section__recipe-container">
-          <div class="nav-section__image-container">
-            <img
-              src="./bread-image.jpg"
-              alt="Foto da receita"
-              class="nav-section__image"
-            />
-          </div>
-
-          <div class="nav-section__text-container">
-            <h4 class="nav-section__recipe-title">Bread</h4>
-
-            <p class="nav-section__recipe-description">
-              Feito com fermento e outras coisas
-            </p>
-          </div>
-        </div>
-
-        <div class="nav-section__recipe-container">
-          <div class="nav-section__image-container">
-            <img
-              src="./bread-image.jpg"
-              alt="Foto da receita"
-              class="nav-section__image"
-            />
-          </div>
-
-          <div class="nav-section__text-container">
-            <h4 class="nav-section__recipe-title">Bread</h4>
-
-            <p class="nav-section__recipe-description">
-              Feito com fermento e outras coisas
-            </p>
-          </div>
-        </div>
-
-        <div class="nav-section__recipe-container">
-          <div class="nav-section__image-container">
-            <img
-              src="./bread-image.jpg"
-              alt="Foto da receita"
-              class="nav-section__image"
-            />
-          </div>
-
-          <div class="nav-section__text-container">
-            <h4 class="nav-section__recipe-title">Bread</h4>
-
-            <p class="nav-section__recipe-description">
-              Feito com fermento e outras coisas
-            </p>
-          </div>
-        </div>
-
-        <div class="nav-section__recipe-container">
-          <div class="nav-section__image-container">
-            <img
-              src="./bread-image.jpg"
-              alt="Foto da receita"
-              class="nav-section__image"
-            />
-          </div>
-
-          <div class="nav-section__text-container">
-            <h4 class="nav-section__recipe-title">Bread</h4>
-
-            <p class="nav-section__recipe-description">
-              Feito com fermento e outras coisas
-            </p>
-          </div>
-        </div>
-
-        <div class="nav-section__recipe-container">
-          <div class="nav-section__image-container">
-            <img
-              src="./bread-image.jpg"
-              alt="Foto da receita"
-              class="nav-section__image"
-            />
-          </div>
-
-          <div class="nav-section__text-container">
-            <h4 class="nav-section__recipe-title">Bread</h4>
-
-            <p class="nav-section__recipe-description">
-              Feito com fermento e outras coisas
-            </p>
-          </div>
-        </div>
-
-        <div class="nav-section__recipe-container">
-          <div class="nav-section__image-container">
-            <img
-              src="./bread-image.jpg"
-              alt="Foto da receita"
-              class="nav-section__image"
-            />
-          </div>
-
-          <div class="nav-section__text-container">
-            <h4 class="nav-section__recipe-title">Bread</h4>
-
-            <p class="nav-section__recipe-description">
-              Feito com fermento e outras coisas
-            </p>
-          </div>
-        </div>
-
-        <div class="nav-section__recipe-container">
-          <div class="nav-section__image-container">
-            <img
-              src="./bread-image.jpg"
-              alt="Foto da receita"
-              class="nav-section__image"
-            />
-          </div>
-
-          <div class="nav-section__text-container">
-            <h4 class="nav-section__recipe-title">Bread</h4>
-
-            <p class="nav-section__recipe-description">
-              Feito com fermento e outras coisas
-            </p>
-          </div>
-        </div>
-
-        <div class="nav-section__recipe-container">
-          <div class="nav-section__image-container">
-            <img
-              src="./bread-image.jpg"
-              alt="Foto da receita"
-              class="nav-section__image"
-            />
-          </div>
-
-          <div class="nav-section__text-container">
-            <h4 class="nav-section__recipe-title">Bread</h4>
-
-            <p class="nav-section__recipe-description">
-              Feito com fermento e outras coisas
-            </p>
-          </div>
-        </div>
       </section>
-    </nav>
+    </nav> -->
 
     <!-- footer starting area -->
     <footer class="footer">
