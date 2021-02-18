@@ -1,0 +1,64 @@
+@include respond(phone) {
+  .header {
+    width: 100%;
+    height: 7rem;
+    background: $color-white;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    &__fav-button,
+    &__search-button {
+      height: 3rem;
+      width: 3rem;
+      background: none;
+      border: none;
+      outline: none;
+      cursor: pointer;
+    }
+
+    &__search-input {
+      width: 17rem;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: $color-primary;
+
+      outline: none;
+      border: 0.2rem solid $color-grey-light;
+      border-radius: 2rem;
+      padding: 0.5rem 1rem;
+      transition: all 0.2s;
+    }
+
+    &__search-input:hover,
+    &__search-input:focus {
+      animation: borderIn 3s cubic-bezier(0.3, 0.46, 0, 0.95);
+      animation-fill-mode: forwards;
+    }
+
+    &__search-input::placeholder {
+      font-weight: 300;
+      color: $color-grey-light;
+    }
+
+    &__icon-heart-outlined,
+    &__icon-magnifying-glass {
+      height: 100%;
+      width: 100%;
+      fill: $color-primary;
+      transition: all 0.2s;
+    }
+
+    &__icon-heart-outlined:active {
+      fill: $color-red;
+      transform: translateY(0.5rem) scale(0.9);
+    }
+
+    &__icon-magnifying-glass:active {
+      fill: $color-purple-light;
+      transform: translateY(0.5rem) scale(0.9);
+    }
+  }
+}

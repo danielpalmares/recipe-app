@@ -1,0 +1,109 @@
+@include respond(phone) {
+  .main-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0 0 0;
+  }
+
+  /* RANDOM RECIPE */
+  .random-recipe {
+    width: 31rem;
+    height: 21rem;
+    border-radius: 0.5rem;
+    @include shadow;
+    margin-top: 2rem;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .random-recipe__image-container {
+    height: 80%;
+    overflow: hidden;
+  }
+
+  .random-recipe__info {
+    height: 20%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .random-recipe__image {
+    width: 100%;
+    height: 100%;
+    transform: scale(1.1);
+    transition: transform 0.5s;
+  }
+
+  .random-recipe__image:active {
+    transform: scale(1);
+  }
+
+  .random-recipe__name {
+    margin-left: 1rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+
+  .random-recipe__fav-button {
+    height: 2rem;
+    width: 2rem;
+    margin-right: 1rem;
+    border: none;
+    background: none;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .random-recipe__icon-heart {
+    height: 100%;
+    width: 100%;
+    fill: $color-grey-light;
+    transition: all 0.2s;
+  }
+
+  .random-recipe__icon-heart:active {
+    fill: $color-red;
+    transform: translateY(0.5rem) scale(0.9);
+  }
+
+  .random-recipe__daily-text {
+    position: absolute;
+    top: 10%;
+    left: 0;
+    background-color: $color-white;
+    padding: 0.5rem 1rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+  }
+
+  .random-recipe__text {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: $color-grey;
+  }
+
+  .main-section__search-message {
+    width: 31rem;
+    margin: 4rem 0;
+    text-align: center;
+  }
+
+  .search-message__text {
+    font-size: 1.4rem;
+    font-weight: 400;
+  }
+
+  .search-message__icon-happy {
+    width: 2rem;
+    height: 2rem;
+    fill: $color-primary;
+    opacity: 0;
+    margin-bottom: -0.5rem;
+    margin-left: 0.5rem;
+    animation: opacityEmoji 5s cubic-bezier(0.17, 0.67, 0.92, 0.06) infinite;
+    animation-delay: 1s;
+  }
+}

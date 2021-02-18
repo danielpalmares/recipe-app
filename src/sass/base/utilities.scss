@@ -1,0 +1,39 @@
+/* RESET TO HIGHLIGHTED ELEMENTS ON BROWSERS */
+.noSelect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* FLOATING BUTTON */
+.create-recipe {
+  position: fixed;
+  top: 90%;
+  right: 2%;
+  z-index: 90;
+
+  &__button {
+    width: 4rem;
+    height: 4rem;
+    @include bgGradient;
+
+    border: 0.3rem solid $color-white-light-secondary;
+    outline: none;
+    border-radius: 50%;
+    transition: all 0.2s;
+  }
+
+  &__button:active {
+    @include clickAnimation;
+  }
+
+  &__icon {
+    width: 100%;
+    height: 100%;
+    fill: $color-white-light-secondary;
+  }
+}

@@ -1,0 +1,67 @@
+@include respond(phone) {
+  .fav-navigation {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    color: $color-primary;
+
+    min-width: 100vw;
+    min-height: 100vh;
+    z-index: 99;
+
+    background: $color-white;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
+  &__header {
+    height: 5rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    position: relative;
+  }
+
+  &__header::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    @include bgGradient;
+
+    height: 0.3rem;
+    min-width: 100%;
+    animation: teste 2s cubic-bezier(0.17, 0.67, 0.92, 0.06) infinite;
+  }
+
+  .terciary-heading {
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+
+  &__close-button {
+    height: 3rem;
+    width: 3rem;
+    border: none;
+    background: none;
+    outline: none;
+    transition: all 0.2s;
+  }
+
+  &__close-button:active {
+    @include clickAnimation;
+  }
+
+  &__close-icon {
+    height: 100%;
+    width: 100%;
+    fill: $color-primary;
+    transition: all 0.2s;
+  }
+
+  &__close-icon:active {
+    fill: $color-primary;
+  }
+}

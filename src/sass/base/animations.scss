@@ -1,0 +1,43 @@
+@keyframes borderIn {
+  0% {
+    border-bottom-color: #9695ed;
+  }
+
+  33% {
+    border-bottom-color: #9695ed;
+    border-left-color: #9695ed;
+  }
+
+  66% {
+    border-bottom-color: #9695ed;
+    border-left-color: #9695ed;
+    border-top-color: #9695ed;
+  }
+
+  100% {
+    border-bottom-color: #9695ed;
+    border-left-color: #9695ed;
+    border-top-color: #9695ed;
+    border-right-color: #9695ed;
+  }
+}
+
+@keyframes opacityEmoji {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes teste {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}

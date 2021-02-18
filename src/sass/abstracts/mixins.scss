@@ -1,0 +1,19 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media screen and (min-width: 320px) {
+      @content;
+    }
+  }
+}
+
+@mixin shadow {
+  box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.2);
+}
+
+@mixin bgGradient {
+  background: linear-gradient(to right, $color-blue, $color-green-light);
+}
+
+@mixin clickAnimation {
+  transform: translateY(0.25rem) scale(0.9);
+}
