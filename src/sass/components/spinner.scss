@@ -1,0 +1,18 @@
+@include respond(phone) {
+  .spinner {
+    width: 5rem;
+    height: 5rem;
+    @include bgGradient;
+    padding: 0.5rem;
+    border-radius: 50%;
+    margin: 4rem 0;
+
+    @include animation(rotation, 0.5s, infinite);
+
+    &__in {
+      background-color: $color-white;
+      height: 99%;
+      border-radius: 50%;
+    }
+  }
+}
