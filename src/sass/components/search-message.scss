@@ -1,0 +1,24 @@
+@include respond(phone) {
+  .search-message {
+    width: 31rem;
+    margin: 4rem 0;
+    text-align: center;
+
+    &__text {
+      font-size: $font-size-medium;
+      font-weight: 400;
+    }
+
+    &__message-icon-happy {
+      width: 2rem;
+      height: 2rem;
+      fill: $color-primary;
+      opacity: 0;
+      margin-bottom: -0.5rem;
+      margin-left: 0.5rem;
+
+      @include animation(opacityIn, 5s, infinite);
+      animation-delay: 1s;
+    }
+  }
+}

@@ -55,7 +55,7 @@
     &__remove-fav-button {
       width: 2.5rem;
       height: 2.5rem;
-      background: $color-white;
+      background-color: $color-white;
       position: absolute;
       top: 0;
       left: 70%;
@@ -96,7 +96,7 @@
       margin-left: 0.3rem;
       opacity: 0;
 
-      @include animation(opacityIn, 10s, infinite);
+      @include animation(opacityIn, 5s, infinite);
       animation-delay: 1s;
     }
   }

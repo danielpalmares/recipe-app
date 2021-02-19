@@ -14,13 +14,8 @@
       margin: 2rem 1rem 0 1rem;
     }
 
-    &__heading {
-      font-size: 1.8rem;
-      font-weight: 600;
-    }
-
     &__text {
-      font-size: 1.7rem;
+      font-size: $font-size-big;
       font-weight: 300;
     }
 
@@ -41,14 +36,14 @@
       @include clickAnimation;
     }
 
-    &__close-icon {
+    &__close-icon-cross {
       height: 100%;
       width: 100%;
       fill: $color-white;
       transition: all 0.2s;
     }
 
-    &__close-icon:active {
+    &__close-icon-cross:active {
       fill: $color-white-light;
     }
 
@@ -59,14 +54,14 @@
       transform: translate(-50%, -75%) scale(1);
       cursor: pointer;
 
-      font-size: 1.4rem;
+      font-size: $font-size-medium;
       font-weight: 300;
       color: $color-white;
       text-transform: uppercase;
       letter-spacing: 0.2rem;
       padding: 0.5rem 2rem;
 
-      background: $color-white-transparent-secondary;
+      background-color: $color-white-transparent-secondary;
       border: 0.2rem solid $color-white;
       border-radius: 3rem;
       outline: none;
@@ -74,7 +69,7 @@
     }
 
     &__start-button:active {
-      background: $color-white-transparent;
+      background-color: $color-white-transparent;
       transform: translate(-50%, -70%) scale(0.95);
     }
   }

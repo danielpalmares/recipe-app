@@ -6,12 +6,13 @@
 @import './base/utilities.scss';
 
 @import './components/custom-card.scss';
+@import './components/recipe-container.scss';
+@import './components/search-message.scss';
 
-@import './layout/fav-navigation.scss';
 @import './layout/fav-section.scss';
 @import './layout/footer.scss';
 @import './layout/header.scss';
 @import './layout/main-section.scss';
-@import './layout/nav-section.scss';
+@import './layout/nav-list.scss';
 
 @import './pages/home.scss';

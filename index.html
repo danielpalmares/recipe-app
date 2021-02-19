@@ -77,186 +77,89 @@
     <section class="main-section">
       <div class="custom-card">
         <div class="custom-card__text-container">
-          <h2 class="custom-card__heading">Personalize</h2>
-          <span class="custom-card__text">Suas recomendações</span>
+          <h1 class="heading-primary">Personalize</h1>
+          <span class="custom-card__text">Your recommendations</span>
         </div>
 
         <button class="custom-card__close-button noSelect">
-          <svg class="icon custom-card__close-icon">
-            <use xlink:href="./src/img/sprite.svg#icon-cross"></use>
+          <svg class="icon custom-card__close-icon-cross">
+            <use xlink:href="src/img/sprite.svg#icon-cross"></use>
           </svg>
         </button>
 
         <button class="custom-card__start-button noSelect">
-          Comece a personalizar
+          Start personalizing
         </button>
       </div>
 
-      <div class="random-recipe">
-        <div class="random-recipe__image-container">
+      <div class="recipe-container">
+        <div class="recipe-container__image-container">
           <img
-            src="./src/img/bread-image.jpg"
-            class="random-recipe__image"
-            alt="Foto da receita"
+            src="src/img/bread-image.jpg"
+            class="recipe-container__image"
+            alt="Recipe photo"
           />
         </div>
 
-        <div class="random-recipe__info">
-          <span class="random-recipe__name">Camarão</span>
+        <div class="recipe-container__info">
+          <span class="recipe-container__name">Bread</span>
 
-          <button class="random-recipe__fav-button noSelect">
-            <svg class="icon random-recipe__icon-heart">
-              <use xlink:href="./src/img/sprite.svg#icon-heart"></use>
+          <button class="recipe-container__fav-button noSelect">
+            <svg class="icon recipe-container__fav-icon-heart">
+              <use xlink:href="src/img/sprite.svg#icon-heart"></use>
             </svg>
           </button>
         </div>
 
-        <div class="random-recipe__daily-text">
-          <span class="random-recipe__text">Receita do dia</span>
+        <div class="recipe-container__random-text">
+          <span class="recipe-container__text">Recipe of the day</span>
         </div>
       </div>
 
-      <div class="random-recipe">
-        <div class="random-recipe__image-container">
-          <img
-            src="./src/img/bread-image.jpg"
-            class="random-recipe__image"
-            alt="Foto da receita"
-          />
-        </div>
-
-        <div class="random-recipe__info">
-          <span class="random-recipe__name">Camarão</span>
-
-          <button class="random-recipe__fav-button noSelect">
-            <svg class="icon random-recipe__icon-heart">
-              <use xlink:href="./src/img/sprite.svg#icon-heart"></use>
-            </svg>
-          </button>
-        </div>
-
-        <!-- <div class="random-recipe__daily-text">
-          <span class="random-recipe__text">Receita do dia</span>
-        </div> -->
-      </div>
-
-      <div class="random-recipe">
-        <div class="random-recipe__image-container">
-          <img
-            src="./src/img/bread-image.jpg"
-            class="random-recipe__image"
-            alt="Foto da receita"
-          />
-        </div>
-
-        <div class="random-recipe__info">
-          <span class="random-recipe__name">Camarão</span>
-
-          <button class="random-recipe__fav-button noSelect">
-            <svg class="icon random-recipe__icon-heart">
-              <use xlink:href="./src/img/sprite.svg#icon-heart"></use>
-            </svg>
-          </button>
-        </div>
-
-        <!-- <div class="random-recipe__daily-text">
-          <span class="random-recipe__text">Receita do dia</span>
-        </div> -->
-      </div>
-
-      <div class="random-recipe">
-        <div class="random-recipe__image-container">
-          <img
-            src="./src/img/bread-image.jpg"
-            class="random-recipe__image"
-            alt="Foto da receita"
-          />
-        </div>
-
-        <div class="random-recipe__info">
-          <span class="random-recipe__name">Camarão</span>
-
-          <button class="random-recipe__fav-button noSelect">
-            <svg class="icon random-recipe__icon-heart">
-              <use xlink:href="./src/img/sprite.svg#icon-heart"></use>
-            </svg>
-          </button>
-        </div>
-
-        <!-- <div class="random-recipe__daily-text">
-          <span class="random-recipe__text">Receita do dia</span>
-        </div> -->
-      </div>
-
-      <div class="random-recipe">
-        <div class="random-recipe__image-container">
-          <img
-            src="./src/img/bread-image.jpg"
-            class="random-recipe__image"
-            alt="Foto da receita"
-          />
-        </div>
-
-        <div class="random-recipe__info">
-          <span class="random-recipe__name">Camarão</span>
-
-          <button class="random-recipe__fav-button noSelect">
-            <svg class="icon random-recipe__icon-heart">
-              <use xlink:href="./src/img/sprite.svg#icon-heart"></use>
-            </svg>
-          </button>
-        </div>
-
-        <!-- <div class="random-recipe__daily-text">
-          <span class="random-recipe__text">Receita do dia</span>
-        </div> -->
-      </div>
-
-      <div class="main-section__search-message search-message">
+      <div class="search-message">
         <span class="search-message__text"
-          >Comece buscando por alguma receita ou ingrediente!</span
+          >Start by searching for a recipe or an ingredient!</span
         >
-        <svg class="icon search-message__icon-happy">
-          <use xlink:href="./src/img/sprite.svg#icon-emoji-happy"></use>
+        <svg class="icon search-message__message-icon-happy">
+          <use xlink:href="src/img/sprite.svg#icon-emoji-happy"></use>
         </svg>
       </div>
     </section>
 
     <!-- nav starting area -->
-    <!-- <nav class="fav-navigation">
-      <header class="fav-navigation__header">
-        <h3 class="terciary-heading">Suas receitas</h3>
+    <!-- <nav class="nav-list">
+      <header class="nav-list__header">
+        <h1 class="heading-primary">Your recipes</h1>
 
-        <button class="fav-navigation__close-button">
-          <svg class="icon fav-navigation__close-icon">
-            <use xlink:href="./src/img/sprite.svg#icon-cross"></use>
+        <button class="nav-list__close-button">
+          <svg class="icon nav-list__close-icon">
+            <use xlink:href="src/img/sprite.svg#icon-cross"></use>
           </svg>
         </button>
       </header>
 
-      nav section starting area
-      <section class="nav-section">
-        <div class="nav-section__message-container">
-          <span class="nav-section__message-text"
-            >Você não enviou receitas ainda</span
+      <section class="nav-list-section">
+        <div class="nav-list-section__message-container">
+          <span class="nav-list-section__message-text"
+            >You don't have any recipe yet</span
           >
-          <svg class="icon nav-section__message-icon">
-            <use xlink:href="./src/img/sprite.svg#icon-emoji-sad"></use>
+          <svg class="icon nav-list-section__message-icon-sad">
+            <use xlink:href="src/img/sprite.svg#icon-emoji-sad"></use>
           </svg>
         </div>
 
-        <div class="nav-section__recipe-container">
-          <div class="nav-section__image-container">
+        <div class="nav-list-section__recipe-container">
+          <div class="nav-list-section__image-container">
             <img
-              src="./src/img/bread-image.jpg"
-              alt="Foto da receita"
-              class="nav-section__image"
+              src="src/img/bread-image.jpg"
+              alt="Recipe photo"
+              class="nav-list-section__image"
             />
           </div>
 
-          <div class="nav-section__text-container">
-            <h4 class="nav-section__recipe-title">Bread</h4>
-            <p class="nav-section__recipe-description">Feito com fermento</p>
+          <div class="nav-list-section__text-container">
+            <h3 class="heading-tertiary">Bread</h3>
+            <p class="nav-list-section__recipe-description">Made with love</p>
           </div>
         </div>
       </section>
@@ -265,8 +168,8 @@
     <!-- footer starting area -->
     <footer class="footer">
       <p class="footer__copy-text">
-        &copy; Copyright por Daniel Palmares. Use para aprendizagem ou seu
-        portfólio. Não use para ensinar. Não reivindique como seu.
+        &copy; Copyright by Daniel Palmares. Use for learning or your portfolio.
+        Don't use to teach. Don't claim as your own.
       </p>
     </footer>
 

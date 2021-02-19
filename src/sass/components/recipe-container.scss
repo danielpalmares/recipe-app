@@ -1,5 +1,5 @@
 @include respond(phone) {
-  .random-recipe {
+  .recipe-container {
     width: 31rem;
     height: 21rem;
     border-radius: 0.5rem;
@@ -13,13 +13,6 @@
       overflow: hidden;
     }
 
-    &__info {
-      height: 20%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
     &__image {
       width: 100%;
       height: 100%;
@@ -31,9 +24,16 @@
       transform: scale(1);
     }
 
+    &__info {
+      height: 20%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
     &__name {
       margin-left: 1rem;
-      font-size: 1.4rem;
+      font-size: $font-size-medium;
       font-weight: 600;
     }
 
@@ -47,19 +47,19 @@
       cursor: pointer;
     }
 
-    &__icon-heart {
+    &__fav-icon-heart {
       height: 100%;
       width: 100%;
       fill: $color-grey-light;
       transition: all 0.2s;
     }
 
-    &__icon-heart:active {
+    &__fav-icon-heart:active {
       fill: $color-red;
-      transform: translateY(0.5rem) scale(0.9);
+      @include clickAnimation;
     }
 
-    &__daily-text {
+    &__random-text {
       position: absolute;
       top: 10%;
       left: 0;
@@ -70,7 +70,7 @@
     }
 
     &__text {
-      font-size: 1.2rem;
+      font-size: $font-size-small;
       font-weight: 600;
       color: $color-grey;
     }

@@ -86,11 +86,8 @@
     position: relative; }
     .custom-card__text-container {
       margin: 2rem 1rem 0 1rem; }
-    .custom-card__heading {
-      font-size: 1.8rem;
-      font-weight: 600; }
     .custom-card__text {
-      font-size: 1.7rem;
+      font-size: 1.6rem;
       font-weight: 300; }
     .custom-card__close-button {
       height: 3rem;
@@ -105,12 +102,12 @@
       transition: all 0.2s; }
     .custom-card__close-button:active {
       transform: translateY(0.25rem) scale(0.9); }
-    .custom-card__close-icon {
+    .custom-card__close-icon-cross {
       height: 100%;
       width: 100%;
       fill: #fff;
       transition: all 0.2s; }
-    .custom-card__close-icon:active {
+    .custom-card__close-icon-cross:active {
       fill: #fafafa; }
     .custom-card__start-button {
       position: absolute;
@@ -124,63 +121,89 @@
       text-transform: uppercase;
       letter-spacing: 0.2rem;
       padding: 0.5rem 2rem;
-      background: rgba(255, 255, 255, 0.3);
+      background-color: rgba(255, 255, 255, 0.3);
       border: 0.2rem solid #fff;
       border-radius: 3rem;
       outline: none;
       transition: all 0.2s; }
     .custom-card__start-button:active {
-      background: rgba(255, 255, 255, 0.5);
+      background-color: rgba(255, 255, 255, 0.5);
       transform: translate(-50%, -70%) scale(0.95); } }
 
 @media screen and (min-width: 320px) {
-  .fav-navigation {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    color: #536472;
-    min-width: 100vw;
-    min-height: 100vh;
-    z-index: 99;
-    background: #fff;
-    overflow-y: scroll;
-    overflow-x: hidden; }
-  __header {
-    height: 5rem;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 2rem;
+  .recipe-container {
+    width: 31rem;
+    height: 21rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.2);
+    margin-top: 2rem;
+    overflow: hidden;
     position: relative; }
-  __header::after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: linear-gradient(to right, #0575e6, #00f260);
-    height: 0.3rem;
-    min-width: 100%;
-    animation: borderOut 2s cubic-bezier(0.17, 0.67, 0.92, 0.06) infinite; }
-  .terciary-heading {
-    font-size: 1.6rem;
-    font-weight: 600; }
-  __close-button {
-    height: 3rem;
-    width: 3rem;
-    border: none;
-    background: none;
-    outline: none;
-    transition: all 0.2s; }
-  __close-button:active {
-    transform: translateY(0.25rem) scale(0.9); }
-  __close-icon {
-    height: 100%;
-    width: 100%;
-    fill: #536472;
-    transition: all 0.2s; }
-  __close-icon:active {
-    fill: #536472; } }
+    .recipe-container__image-container {
+      height: 80%;
+      overflow: hidden; }
+    .recipe-container__image {
+      width: 100%;
+      height: 100%;
+      transform: scale(1.1);
+      transition: transform 0.5s; }
+    .recipe-container__image:active {
+      transform: scale(1); }
+    .recipe-container__info {
+      height: 20%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
+    .recipe-container__name {
+      margin-left: 1rem;
+      font-size: 1.4rem;
+      font-weight: 600; }
+    .recipe-container__fav-button {
+      height: 2rem;
+      width: 2rem;
+      margin-right: 1rem;
+      border: none;
+      background: none;
+      outline: none;
+      cursor: pointer; }
+    .recipe-container__fav-icon-heart {
+      height: 100%;
+      width: 100%;
+      fill: #ccc;
+      transition: all 0.2s; }
+    .recipe-container__fav-icon-heart:active {
+      fill: #ef233c;
+      transform: translateY(0.25rem) scale(0.9); }
+    .recipe-container__random-text {
+      position: absolute;
+      top: 10%;
+      left: 0;
+      background-color: #fff;
+      padding: 0.5rem 1rem;
+      border-top-right-radius: 0.5rem;
+      border-bottom-right-radius: 0.5rem; }
+    .recipe-container__text {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #777; } }
+
+@media screen and (min-width: 320px) {
+  .search-message {
+    width: 31rem;
+    margin: 4rem 0;
+    text-align: center; }
+    .search-message__text {
+      font-size: 1.4rem;
+      font-weight: 400; }
+    .search-message__message-icon-happy {
+      width: 2rem;
+      height: 2rem;
+      fill: #536472;
+      opacity: 0;
+      margin-bottom: -0.5rem;
+      margin-left: 0.5rem;
+      animation: opacityIn 5s cubic-bezier(0.49, 0.9, 0.84, 0.46) infinite;
+      animation-delay: 1s; } }
 
 @media screen and (min-width: 320px) {
   .fav-section {
@@ -223,7 +246,7 @@
     .fav-section__remove-fav-button {
       width: 2.5rem;
       height: 2.5rem;
-      background: #fff;
+      background-color: #fff;
       position: absolute;
       top: 0;
       left: 70%;
@@ -251,24 +274,26 @@
       margin-bottom: -0.4rem;
       margin-left: 0.3rem;
       opacity: 0;
-      animation: opacityIn 10s cubic-bezier(0.49, 0.9, 0.84, 0.46) infinite;
+      animation: opacityIn 5s cubic-bezier(0.49, 0.9, 0.84, 0.46) infinite;
       animation-delay: 1s; } }
 
-.footer {
-  width: 100%;
-  height: 12rem;
-  background-color: #fafafa;
-  border-top: 0.3rem solid #f5f5f5;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; }
-  .footer__copy-text {
-    width: 31rem;
-    text-align: center;
-    font-size: 1.1rem;
-    font-weight: 400;
-    color: #777; }
+@media screen and (min-width: 320px) {
+  .footer {
+    width: 100%;
+    height: 12rem;
+    background-color: #fafafa;
+    border-top: 0.3rem solid #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; }
+    .footer__copy-text {
+      width: 31rem;
+      padding: 0 1rem;
+      text-align: center;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: #777; } }
 
 @media screen and (min-width: 320px) {
   .header {
@@ -320,79 +345,108 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 2rem 0 0 0; }
-    .main-section__search-message {
-      width: 31rem;
-      margin: 4rem 0;
-      text-align: center; }
-      .main-section__search-message__text {
-        font-size: 1.4rem;
-        font-weight: 400; }
-      .main-section__search-message__icon-happy {
-        width: 2rem;
-        height: 2rem;
-        fill: #536472;
-        opacity: 0;
-        margin-bottom: -0.5rem;
-        margin-left: 0.5rem;
-        animation: opacityIn 5s cubic-bezier(0.17, 0.67, 0.92, 0.06) infinite;
-        animation-delay: 1s; } }
+    margin-top: 2rem; } }
 
 @media screen and (min-width: 320px) {
-  .nav-section {
+  .nav-list {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    color: #536472;
+    min-width: 100vw;
+    min-height: 100vh;
+    z-index: 99;
+    background: #fff;
+    overflow-y: scroll;
+    overflow-x: hidden; }
+    .nav-list__header {
+      height: 5rem;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+      position: relative; }
+    .nav-list__header::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: linear-gradient(to right, #0575e6, #00f260);
+      height: 0.3rem;
+      min-width: 100%;
+      animation: borderOut 2s cubic-bezier(0.49, 0.9, 0.84, 0.46) infinite; }
+    .nav-list__close-button {
+      height: 3rem;
+      width: 3rem;
+      border: none;
+      background: none;
+      outline: none;
+      transition: all 0.2s; }
+    .nav-list__close-button:active {
+      transform: translateY(0.25rem) scale(0.9); }
+    .nav-list__close-icon {
+      height: 100%;
+      width: 100%;
+      fill: #536472;
+      transition: all 0.2s; }
+    .nav-list__close-icon:active {
+      fill: #0575e6; }
+  /* SECTION */
+  .nav-list-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #fff; }
-  __recipe-container {
-    display: flex;
-    align-items: center;
-    background: #fafafa;
-    width: 31rem;
-    height: 10rem;
-    padding: 1rem 1.5rem;
-    margin-bottom: 1rem;
-    border-radius: 1rem;
-    border: 0.3rem solid #f5f5f5;
-    transition: all 0.2s; }
-  __recipe-container:first-child {
-    margin-top: 1rem; }
-  __recipe-container:active {
-    transform: scale(0.9); }
-  __image-container {
-    width: 30%;
-    height: 7rem;
-    border: 0.2rem solid #00f260;
-    border-radius: 50%;
-    overflow: hidden; }
-  __image {
-    width: 100%;
-    height: 100%; }
-  __text-container {
-    width: 70%;
-    font-size: 1.4rem;
-    margin-left: 1rem;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap; }
-  /* NO RECIPE MESSAGE */
-  __message-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 4rem;
-    text-align: center; }
-  __message-text {
-    font-size: 1.6rem;
-    font-weight: 600; }
-  __message-icon {
-    width: 3rem;
-    height: 3rem;
-    fill: #536472;
-    opacity: 0;
-    animation: opacityIn 5s cubic-bezier(0.17, 0.67, 0.92, 0.06) infinite;
-    animation-delay: 1s; } }
+    background-color: #fff;
+    /* NO RECIPE MESSAGE */ }
+    .nav-list-section__recipe-container {
+      display: flex;
+      align-items: center;
+      background-color: #fafafa;
+      width: 31rem;
+      height: 10rem;
+      padding: 1rem 1.5rem;
+      margin-bottom: 1rem;
+      border-radius: 1rem;
+      border: 0.3rem solid #f5f5f5;
+      transition: all 0.2s; }
+    .nav-list-section__recipe-container:first-child {
+      margin-top: 1rem; }
+    .nav-list-section__recipe-container:active {
+      transform: scale(0.9); }
+    .nav-list-section__image-container {
+      width: 30%;
+      height: 7rem;
+      border: 0.2rem solid #00f260;
+      border-radius: 50%;
+      overflow: hidden; }
+    .nav-list-section__image {
+      width: 100%;
+      height: 100%; }
+    .nav-list-section__text-container {
+      width: 70%;
+      font-size: 1.4rem;
+      margin-left: 1rem;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap; }
+    .nav-list-section__message-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 4rem;
+      text-align: center; }
+    .nav-list-section__message-text {
+      font-size: 1.6rem;
+      font-weight: 600; }
+    .nav-list-section__message-icon-sad {
+      width: 3rem;
+      height: 3rem;
+      fill: #536472;
+      opacity: 0;
+      animation: opacityIn 5s cubic-bezier(0.49, 0.9, 0.84, 0.46) infinite;
+      animation-delay: 1s; } }
 
 *,
 *::after,
