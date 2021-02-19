@@ -10,36 +10,38 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./dist/css/main.css" />
+    <link rel="stylesheet" href="dist/css/main.css" />
 
     <title>Recipe App</title>
   </head>
+
   <body>
-    <!-- floating icons area -->
+    <!-- floating button starting area -->
     <div class="create-recipe">
       <button class="create-recipe__button">
-        <svg class="icon create-recipe__icon">
-          <use xlink:href="./src/img/sprite.svg#icon-plus"></use>
+        <svg class="icon create-recipe__icon-plus">
+          <use xlink:href="src/img/sprite.svg#icon-plus"></use>
         </svg>
       </button>
     </div>
+
     <!-- header starting area -->
     <header class="header">
-      <button class="header__fav-button noSelect">
-        <svg class="icon header__icon-heart-outlined">
-          <use xlink:href="./src/img/sprite.svg#icon-list"></use>
+      <button class="header__list-button noSelect">
+        <svg class="icon header__icon-list">
+          <use xlink:href="src/img/sprite.svg#icon-list"></use>
         </svg>
       </button>
 
       <input
         type="text"
         class="header__search-input"
-        placeholder="O que busca?"
+        placeholder="Recipes, ingredients..."
       />
 
       <button class="header__search-button noSelect">
         <svg class="icon header__icon-magnifying-glass">
-          <use xlink:href="./src/img/sprite.svg#icon-magnifying-glass"></use>
+          <use xlink:href="src/img/sprite.svg#icon-magnifying-glass"></use>
         </svg>
       </button>
     </header>
@@ -47,91 +49,23 @@
     <!-- fav section starting area -->
     <section class="fav-section">
       <!-- <div class="fav-section__message-container">
-        <span class="fav-section__message-text">Sem receitas favoritas</span>
-        <svg class="icon fav-section__message-icon">
-          <use xlink:href="./src/img/sprite.svg#icon-emoji-sad"></use>
+        <span class="fav-section__message-text">No favorite recipes yet</span>
+        <svg class="icon fav-section__message-icon-sad">
+          <use xlink:href="src/img/sprite.svg#icon-emoji-sad"></use>
         </svg>
       </div> -->
 
       <div class="fav-section__recipe-container noSelect">
         <div class="fav-section__recipe-image-container">
           <img
-            src="./src/img/bread-image.jpg"
+            src="src/img/bread-image.jpg"
             class="fav-section__recipe-image"
-            alt="Foto da receita"
+            alt="Recipe photo"
           />
 
           <button class="fav-section__remove-fav-button noSelect">
-            <svg class="icon fav-section__remove-fav-icon">
-              <use xlink:href="./src/img/sprite.svg#icon-cross"></use>
-            </svg>
-          </button>
-        </div>
-        <span class="fav-section__recipe-name">Bread</span>
-      </div>
-
-      <div class="fav-section__recipe-container noSelect">
-        <div class="fav-section__recipe-image-container">
-          <img
-            src="./src/img/bread-image.jpg"
-            class="fav-section__recipe-image"
-            alt="Foto da receita"
-          />
-
-          <button class="fav-section__remove-fav-button noSelect">
-            <svg class="icon fav-section__remove-fav-icon">
-              <use xlink:href="./src/img/sprite.svg#icon-cross"></use>
-            </svg>
-          </button>
-        </div>
-        <span class="fav-section__recipe-name">Bread</span>
-      </div>
-
-      <div class="fav-section__recipe-container noSelect">
-        <div class="fav-section__recipe-image-container">
-          <img
-            src="./src/img/bread-image.jpg"
-            class="fav-section__recipe-image"
-            alt="Foto da receita"
-          />
-
-          <button class="fav-section__remove-fav-button noSelect">
-            <svg class="icon fav-section__remove-fav-icon">
-              <use xlink:href="./src/img/sprite.svg#icon-cross"></use>
-            </svg>
-          </button>
-        </div>
-        <span class="fav-section__recipe-name">Bread</span>
-      </div>
-
-      <div class="fav-section__recipe-container noSelect">
-        <div class="fav-section__recipe-image-container">
-          <img
-            src="./src/img/bread-image.jpg"
-            class="fav-section__recipe-image"
-            alt="Foto da receita"
-          />
-
-          <button class="fav-section__remove-fav-button noSelect">
-            <svg class="icon fav-section__remove-fav-icon">
-              <use xlink:href="./src/img/sprite.svg#icon-cross"></use>
-            </svg>
-          </button>
-        </div>
-        <span class="fav-section__recipe-name">Bread</span>
-      </div>
-
-      <div class="fav-section__recipe-container noSelect">
-        <div class="fav-section__recipe-image-container">
-          <img
-            src="./src/img/bread-image.jpg"
-            class="fav-section__recipe-image"
-            alt="Foto da receita"
-          />
-
-          <button class="fav-section__remove-fav-button noSelect">
-            <svg class="icon fav-section__remove-fav-icon">
-              <use xlink:href="./src/img/sprite.svg#icon-cross"></use>
+            <svg class="icon fav-section__remove-fav-icon-cross">
+              <use xlink:href="src/img/sprite.svg#icon-cross"></use>
             </svg>
           </button>
         </div>
@@ -336,6 +270,6 @@
       </p>
     </footer>
 
-    <script src="./script.js"></script>
+    <script src="src/js/script.js"></script>
   </body>
 </html>

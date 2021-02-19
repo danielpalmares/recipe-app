@@ -1,28 +1,28 @@
 @keyframes borderIn {
   0% {
-    border-bottom-color: #9695ed;
+    border-left-color: $color-blue;
   }
 
   33% {
-    border-bottom-color: #9695ed;
-    border-left-color: #9695ed;
+    border-left-color: $color-blue;
+    border-top-color: $color-blue;
   }
 
   66% {
-    border-bottom-color: #9695ed;
-    border-left-color: #9695ed;
-    border-top-color: #9695ed;
+    border-left-color: $color-blue;
+    border-top-color: $color-blue;
+    border-right-color: $color-blue;
   }
 
   100% {
-    border-bottom-color: #9695ed;
-    border-left-color: #9695ed;
-    border-top-color: #9695ed;
-    border-right-color: #9695ed;
+    border-left-color: $color-blue;
+    border-top-color: $color-blue;
+    border-right-color: $color-blue;
+    border-bottom-color: $color-blue;
   }
 }
 
-@keyframes opacityEmoji {
+@keyframes opacityIn {
   from {
     opacity: 0;
   }
@@ -32,7 +32,7 @@
   }
 }
 
-@keyframes teste {
+@keyframes borderOut {
   from {
     transform: translateX(-100%);
   }

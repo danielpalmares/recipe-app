@@ -76,7 +76,7 @@
     fill: $color-primary;
     opacity: 0;
 
-    animation: opacityEmoji 5s cubic-bezier(0.17, 0.67, 0.92, 0.06) infinite;
+    animation: opacityIn 5s cubic-bezier(0.17, 0.67, 0.92, 0.06) infinite;
     animation-delay: 1s;
   }
 }
