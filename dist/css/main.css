@@ -399,7 +399,8 @@
       transform: translateY(0.25rem) scale(0.9); } }
 
 @media screen and (min-width: 320px) {
-  .main-section {
+  .main-section,
+  .recipe-section {
     display: flex;
     flex-direction: column;
     justify-content: center;

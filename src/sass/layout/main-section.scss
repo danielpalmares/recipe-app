@@ -1,5 +1,6 @@
 @include respond(phone) {
-  .main-section {
+  .main-section,
+  .recipe-section {
     display: flex;
     flex-direction: column;
     justify-content: center;
