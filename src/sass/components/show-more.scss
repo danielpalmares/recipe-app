@@ -1,0 +1,54 @@
+@include respond(phone) {
+  .show-more {
+    width: 13rem;
+    height: 4rem;
+    margin: 4rem 0;
+
+    @include bgGradient;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    border-radius: 3rem;
+    transition: all 0.2s;
+
+    &:active {
+      @include clickAnimation;
+      @include bgGradientOpposite;
+    }
+
+    &__button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      outline: none;
+      border: none;
+      background-color: $color-white;
+      cursor: pointer;
+
+      border-radius: 3rem;
+      padding: 0.5rem 1rem;
+      transition: all 0.2s;
+    }
+
+    &__button:active {
+      background-color: $color-white-transparent;
+    }
+
+    &__text {
+      font-size: $font-size-small;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: $color-primary;
+    }
+
+    &__icon-chevron {
+      height: 2rem;
+      width: 2rem;
+      fill: $color-primary;
+      margin-left: 0.3rem;
+    }
+  }
+}

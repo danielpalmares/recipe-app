@@ -17,7 +17,7 @@
 
   <body>
     <!-- floating button starting area -->
-    <div class="create-recipe">
+    <div class="create-recipe noSelect">
       <button class="create-recipe__button">
         <svg class="icon create-recipe__icon-plus">
           <use xlink:href="src/img/sprite.svg#icon-plus"></use>
@@ -93,7 +93,7 @@
       </div>
 
       <div class="recipe-container">
-        <div class="recipe-container__image-container">
+        <div class="recipe-container__image-container noSelect">
           <img
             src="src/img/bread-image.jpg"
             class="recipe-container__image"
@@ -117,7 +117,7 @@
       </div>
 
       <div class="recipe-container">
-        <div class="recipe-container__image-container">
+        <div class="recipe-container__image-container noSelect">
           <img
             src="src/img/bread-image.jpg"
             class="recipe-container__image"
@@ -147,6 +147,15 @@
         <svg class="icon search-message__message-icon-happy">
           <use xlink:href="src/img/sprite.svg#icon-emoji-happy"></use>
         </svg>
+      </div>
+
+      <div class="show-more">
+        <button class="show-more__button noSelect">
+          <span class="show-more__text">Show more</span>
+          <svg class="icon show-more__icon-chevron">
+            <use xlink:href="src/img/sprite.svg#icon-chevron-thin-down"></use>
+          </svg>
+        </button>
       </div>
     </section>
 

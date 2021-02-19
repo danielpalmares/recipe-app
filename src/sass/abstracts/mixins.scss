@@ -14,6 +14,10 @@
   background: linear-gradient(to right, $color-blue, $color-green-light);
 }
 
+@mixin bgGradientOpposite {
+  background: linear-gradient(to left, $color-blue, $color-green-light);
+}
+
 @mixin clickAnimation {
   transform: translateY(0.25rem) scale(0.9);
 }

@@ -6,9 +6,9 @@
   "author": "Daniel Palmares <danielpalmares100@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "scss": "node-sass src/sass/main.scss dist/css/main.css -w"
+    "scss": "node-sass src/sass/main.scss dist/css/main.css"
   },
   "dependencies": {
-    "node-sass": "4.14.1"
+    "node-sass": "^5.0.0"
   }
 }
