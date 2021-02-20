@@ -175,6 +175,123 @@
       </div>
     </section>
 
+    <!-- form starting area -->
+    <div class="upload-recipe-window">
+      <form action="#" class="upload">
+        <div class="upload__column">
+          <div class="wrapper-title">
+            <h3 class="heading-tertiary title-an">Recipe data</h3>
+            <button class="wrapper-title__close">
+              <svg class="icon wrapper-title__close-icon">
+                <use xlink:href="src/img/sprite.svg#icon-cross"></use>
+              </svg>
+            </button>
+          </div>
+
+          <div class="wrapper-label">
+            <label>Title</label>
+            <input value="Teste25" required name="title" type="text" />
+          </div>
+
+          <div class="wrapper-label">
+            <label>URL</label>
+            <input value="Teste25" required name="sourceUrl" type="text" />
+          </div>
+
+          <div class="wrapper-label">
+            <label>Image URL</label>
+            <input value="Teste25" required name="image" type="text" />
+          </div>
+
+          <div class="wrapper-label">
+            <label>Publisher</label>
+            <input value="Teste25" required name="publisher" type="text" />
+          </div>
+
+          <div class="wrapper-label">
+            <label>Prep time</label>
+            <input value="25" required name="cookingTime" type="number" />
+          </div>
+
+          <div class="wrapper-label">
+            <label>Servings</label>
+            <input value="25" required name="servings" type="number" />
+          </div>
+        </div>
+
+        <div class="upload__column">
+          <div class="wrapper-title">
+            <h3 class="heading-tertiary title-an">Ingredients</h3>
+          </div>
+
+          <div class="wrapper-label">
+            <label>Ingredient 1</label>
+            <input
+              value="0.5,kg,Rice"
+              type="text"
+              required
+              name="ingredient-1"
+              placeholder="Format: 'Qt,Unit,Desc'"
+            />
+          </div>
+
+          <div class="wrapper-label">
+            <label>Ingredient 2</label>
+            <input
+              value="1,,Avocado"
+              type="text"
+              name="ingredient-2"
+              placeholder="Format: 'Qt,Unit,Desc'"
+            />
+          </div>
+
+          <div class="wrapper-label">
+            <label>Ingredient 3</label>
+            <input
+              value=",,Salt"
+              type="text"
+              name="ingredient-3"
+              placeholder="Format: 'Qt,Unit,Desc'"
+            />
+          </div>
+
+          <div class="wrapper-label">
+            <label>Ingredient 4</label>
+            <input
+              type="text"
+              name="ingredient-4"
+              placeholder="Format: 'Qt,Unit,Desc'"
+            />
+          </div>
+
+          <div class="wrapper-label">
+            <label>Ingredient 5</label>
+            <input
+              type="text"
+              name="ingredient-5"
+              placeholder="Format: 'Qt,Unit,Desc'"
+            />
+          </div>
+
+          <div class="wrapper-label">
+            <label>Ingredient 6</label>
+            <input
+              type="text"
+              name="ingredient-6"
+              placeholder="Format: 'Qt,Unit,Desc'"
+            />
+          </div>
+        </div>
+
+        <button class="upload-button">
+          <span class="upload-button__text">Upload</span>
+          <svg class="icon upload-button__send-icon">
+            <use xlink:href="src/img/sprite.svg#icon-upload"></use>
+          </svg>
+        </button>
+      </form>
+    </div>
+
     <!-- nav starting area -->
     <!-- <nav class="nav-list">
       <header class="nav-list__header">
