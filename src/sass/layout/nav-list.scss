@@ -13,6 +13,8 @@
     overflow-y: scroll;
     overflow-x: hidden;
 
+    display: none;
+
     &__header {
       height: 5rem;
       width: 100%;
@@ -62,7 +64,7 @@
 
   /* SECTION */
   .nav-list-section {
-    display: flex;
+    display: none; /* flex */
     flex-direction: column;
     align-items: center;
     background-color: $color-white;
