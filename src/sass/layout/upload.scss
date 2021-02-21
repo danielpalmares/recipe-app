@@ -5,15 +5,19 @@
     bottom: 0;
     color: $color-primary;
 
-    min-width: 100vw;
-    min-height: 100vh;
-    z-index: 99;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
 
     background: $color-white;
     overflow-y: scroll;
     overflow-x: hidden;
 
-    display: none;
+    /* hide scrollbar */
+    scrollbar-width: none; /* mozilla */
+    &::-webkit-scrollbar {
+      display: none; /* chrome */
+    }
   }
 
   /* FORM */
@@ -35,7 +39,7 @@
     align-items: center;
     padding: 0 1rem;
 
-    &__close {
+    &__close-button {
       position: absolute;
       top: 20%;
       right: 5%;
@@ -46,9 +50,10 @@
       outline: none;
       border: none;
       transition: all 0.2s;
+      cursor: pointer;
     }
 
-    &__close:active {
+    &__close-button:active {
       @include clickAnimation;
     }
 
@@ -67,8 +72,8 @@
     @include bgGradient;
 
     height: 0.3rem;
-    min-width: 100%;
-    @include animation(borderOut, 2s, infinite);
+    width: 100%;
+    @include animation(borderOut, 7s, infinite);
   }
 
   .wrapper-label {
@@ -83,11 +88,10 @@
 
     & label {
       font-size: $font-size-medium;
-      margin-right: 0.5rem;
     }
 
     & input {
-      width: 17rem;
+      width: 18rem;
       font-family: 'Poppins', sans-serif;
       font-size: $font-size-medium;
       font-weight: 400;
@@ -112,20 +116,22 @@
     }
   }
 
+  /* UPLOAD BUTTON */
   .upload-button {
     width: 100%;
-    height: 5rem;
+    height: 7rem;
 
     display: flex;
     align-items: center;
     justify-content: center;
     border: none;
     outline: none;
+
     border-top: 0.3rem solid $color-white-light-secondary;
     background-color: $color-white-light;
     transition: all 0.2s;
-
     letter-spacing: 0.5rem;
+    cursor: pointer;
 
     &:active {
       letter-spacing: 0;

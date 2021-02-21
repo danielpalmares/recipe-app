@@ -5,16 +5,21 @@
     bottom: 0;
     color: $color-primary;
 
-    min-width: 100vw;
-    min-height: 100vh;
-    z-index: 99;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
 
-    background: $color-white;
+    background-color: $color-white;
     overflow-y: scroll;
     overflow-x: hidden;
 
-    display: none;
+    /* hide scrollbar */
+    scrollbar-width: none; /* mozilla */
+    &::-webkit-scrollbar {
+      display: none; /* chrome */
+    }
 
+    /* NAV HEADER */
     &__header {
       height: 5rem;
       width: 100%;
@@ -30,11 +35,10 @@
       position: absolute;
       top: 100%;
       left: 0;
-      @include bgGradient;
-
       height: 0.3rem;
       min-width: 100%;
-      @include animation(borderOut, 2s, infinite);
+      @include bgGradient;
+      @include animation(borderOut, 7s, infinite);
     }
 
     &__close-button {
@@ -44,6 +48,7 @@
       background: none;
       outline: none;
       transition: all 0.2s;
+      cursor: pointer;
     }
 
     &__close-button:active {
@@ -54,20 +59,15 @@
       height: 100%;
       width: 100%;
       fill: $color-primary;
-      transition: all 0.2s;
     }
 
-    &__close-icon:active {
-      fill: $color-blue;
+    /* NAV SECTION */
+    &__section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: $color-white;
     }
-  }
-
-  /* SECTION */
-  .nav-list-section {
-    display: none; /* flex */
-    flex-direction: column;
-    align-items: center;
-    background-color: $color-white;
 
     &__recipe-container {
       display: flex;
@@ -76,13 +76,13 @@
 
       width: 31rem;
       height: 10rem;
-
       padding: 1rem 1.5rem;
       margin-bottom: 1rem;
 
       border-radius: 1rem;
       border: 0.3rem solid $color-white-light-secondary;
       transition: all 0.2s;
+      cursor: pointer;
     }
 
     &__recipe-container:first-child {
@@ -90,14 +90,13 @@
     }
 
     &__recipe-container:active {
-      transform: scale(0.9);
+      @include clickAnimation;
     }
 
     &__image-container {
       width: 30%;
       height: 7rem;
-
-      border: 0.2rem solid $color-green-light;
+      border: 0.2rem solid $color-grey-light;
       border-radius: 50%;
       overflow: hidden;
     }
@@ -123,9 +122,8 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-
-      margin: 4rem;
       text-align: center;
+      margin: 4rem;
     }
 
     &__message-text {
@@ -133,12 +131,11 @@
       font-weight: 600;
     }
 
-    &__message-icon-sad {
+    &__message-icon {
       width: 3rem;
       height: 3rem;
       fill: $color-primary;
       opacity: 0;
-
       @include animation(opacityIn, 5s, infinite);
       animation-delay: 1s;
     }

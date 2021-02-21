@@ -131,6 +131,139 @@
         </div>
 
         <div class="recipe-container__info">
+          <div class="recipe-container__name-fav">
+            <span class="recipe-container__name">Bread</span>
+
+            <button class="recipe-container__fav-button noSelect">
+              <svg class="icon recipe-container__fav-icon-heart">
+                <use xlink:href="src/img/sprite.svg#icon-heart"></use>
+              </svg>
+            </button>
+          </div>
+
+          <div class="recipe-ingredients">
+            <h3 class="heading-tertiary recipe-ingredients__title">
+              Recipe ingredients
+            </h3>
+            <ul class="recipe-ingredients__list">
+              <li class="recipe-ingredients__ingredient">
+                <div class="recipe-ingredients__wrapper">
+                  <svg class="icon recipe-ingredients__icon-check">
+                    <use xlink:href="src/img/sprite.svg#icon-check"></use>
+                  </svg>
+                  <div class="recipe-ingredients__quantity">300</div>
+                  <span class="recipe-ingredients__unit">oz</span>
+                </div>
+
+                <div class="recipe-ingredients__description">plain for</div>
+              </li>
+
+              <li class="recipe-ingredients__ingredient">
+                <div class="recipe-ingredients__wrapper">
+                  <svg class="icon recipe-ingredients__icon-check">
+                    <use xlink:href="src/img/sprite.svg#icon-check"></use>
+                  </svg>
+                  <div class="recipe-ingredients__quantity">300</div>
+                  <span class="recipe-ingredients__unit">oz</span>
+                </div>
+
+                <div class="recipe-ingredients__description">plain for</div>
+              </li>
+
+              <li class="recipe-ingredients__ingredient">
+                <div class="recipe-ingredients__wrapper">
+                  <svg class="icon recipe-ingredients__icon-check">
+                    <use xlink:href="src/img/sprite.svg#icon-check"></use>
+                  </svg>
+                  <div class="recipe-ingredients__quantity">300</div>
+                  <span class="recipe-ingredients__unit">oz</span>
+                </div>
+
+                <div class="recipe-ingredients__description">plain for</div>
+              </li>
+
+              <li class="recipe-ingredients__ingredient">
+                <div class="recipe-ingredients__wrapper">
+                  <svg class="icon recipe-ingredients__icon-check">
+                    <use xlink:href="src/img/sprite.svg#icon-check"></use>
+                  </svg>
+                  <div class="recipe-ingredients__quantity">300</div>
+                  <span class="recipe-ingredients__unit">oz</span>
+                </div>
+
+                <div class="recipe-ingredients__description">plain for</div>
+              </li>
+
+              <li class="recipe-ingredients__ingredient">
+                <div class="recipe-ingredients__wrapper">
+                  <svg class="icon recipe-ingredients__icon-check">
+                    <use xlink:href="src/img/sprite.svg#icon-check"></use>
+                  </svg>
+                  <div class="recipe-ingredients__quantity">300</div>
+                  <span class="recipe-ingredients__unit">oz</span>
+                </div>
+
+                <div class="recipe-ingredients__description">plain for</div>
+              </li>
+
+              <li class="recipe-ingredients__ingredient">
+                <div class="recipe-ingredients__wrapper">
+                  <svg class="icon recipe-ingredients__icon-check">
+                    <use xlink:href="src/img/sprite.svg#icon-check"></use>
+                  </svg>
+                  <div class="recipe-ingredients__quantity">300</div>
+                  <span class="recipe-ingredients__unit">oz</span>
+                </div>
+
+                <div class="recipe-ingredients__description">plain for</div>
+              </li>
+
+              <li class="recipe-ingredients__ingredient">
+                <div class="recipe-ingredients__wrapper">
+                  <svg class="icon recipe-ingredients__icon-check">
+                    <use xlink:href="src/img/sprite.svg#icon-check"></use>
+                  </svg>
+                  <div class="recipe-ingredients__quantity">300</div>
+                  <span class="recipe-ingredients__unit">oz</span>
+                </div>
+
+                <div class="recipe-ingredients__description">plain for</div>
+              </li>
+
+              <li class="recipe-ingredients__ingredient">
+                <div class="recipe-ingredients__wrapper">
+                  <svg class="icon recipe-ingredients__icon-check">
+                    <use xlink:href="src/img/sprite.svg#icon-check"></use>
+                  </svg>
+                  <div class="recipe-ingredients__quantity">300</div>
+                  <span class="recipe-ingredients__unit">oz</span>
+                </div>
+
+                <div class="recipe-ingredients__description">plain for</div>
+              </li>
+            </ul>
+
+            <h3 class="heading-tertiary recipe-ingredients__title">
+              How to cook it
+            </h3>
+          </div>
+        </div>
+
+        <!-- <div class="recipe-container__random-text">
+          <span class="recipe-container__text">Recipe of the day</span>
+        </div> -->
+      </div>
+
+      <div class="recipe-container">
+        <div class="recipe-container__image-container noSelect">
+          <img
+            src="src/img/bread-image.jpg"
+            class="recipe-container__image"
+            alt="Recipe photo"
+          />
+        </div>
+
+        <div class="recipe-container__info">
           <span class="recipe-container__name">Bread</span>
 
           <button class="recipe-container__fav-button noSelect">
@@ -145,7 +278,7 @@
         </div> -->
       </div>
 
-      <div class="search-message">
+      <!-- <div class="search-message">
         <span class="search-message__text"
           >Start by searching for a recipe or an ingredient!</span
         >
@@ -174,16 +307,19 @@
 
       <div class="spinner">
         <div class="spinner__in"></div>
-      </div>
+      </div> -->
     </section>
 
     <!-- form starting area -->
-    <div class="upload-recipe-window">
+    <div class="upload-recipe-window hidden">
       <form action="#" class="upload">
         <div class="upload__column">
           <div class="wrapper-title">
             <h3 class="heading-tertiary title-an">Recipe data</h3>
-            <button class="wrapper-title__close" id="upload-close-button">
+            <button
+              class="wrapper-title__close-button noSelect"
+              id="upload-close-button"
+            >
               <svg class="icon wrapper-title__close-icon">
                 <use xlink:href="src/img/sprite.svg#icon-cross"></use>
               </svg>
@@ -285,7 +421,7 @@
           </div>
         </div>
 
-        <button class="upload-button">
+        <button class="upload-button noSelect">
           <span class="upload-button__text">Upload</span>
           <svg class="icon upload-button__send-icon">
             <use xlink:href="src/img/sprite.svg#icon-upload"></use>
@@ -294,40 +430,43 @@
       </form>
     </div>
 
-    <!-- nav starting area -->
-    <nav class="nav-list">
+    <!-- nav list starting area -->
+    <nav class="nav-list hidden">
       <header class="nav-list__header">
         <h1 class="heading-primary">Your recipes</h1>
 
-        <button class="nav-list__close-button" id="nav-list-close-button">
+        <button
+          class="nav-list__close-button noSelect"
+          id="nav-list-close-button"
+        >
           <svg class="icon nav-list__close-icon">
             <use xlink:href="src/img/sprite.svg#icon-cross"></use>
           </svg>
         </button>
       </header>
 
-      <section class="nav-list-section">
-        <!-- <div class="nav-list-section__message-container">
-          <span class="nav-list-section__message-text"
+      <section class="nav-list__section">
+        <!-- <div class="nav-list__message-container">
+          <span class="nav-list__message-text"
             >You don't have any recipe yet</span
           >
-          <svg class="icon nav-list-section__message-icon-sad">
+          <svg class="icon nav-list__message-icon">
             <use xlink:href="src/img/sprite.svg#icon-emoji-sad"></use>
           </svg>
         </div> -->
 
-        <div class="nav-list-section__recipe-container">
-          <div class="nav-list-section__image-container">
+        <div class="nav-list__recipe-container noSelect">
+          <div class="nav-list__image-container">
             <img
               src="src/img/bread-image.jpg"
               alt="Recipe photo"
-              class="nav-list-section__image"
+              class="nav-list__image"
             />
           </div>
 
-          <div class="nav-list-section__text-container">
+          <div class="nav-list__text-container">
             <h3 class="heading-tertiary">Bread</h3>
-            <p class="nav-list-section__recipe-description">Made with love</p>
+            <p class="nav-list__recipe-description">Made with love</p>
           </div>
         </div>
       </section>

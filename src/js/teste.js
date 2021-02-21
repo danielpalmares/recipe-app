@@ -1,34 +1,30 @@
 /* DOM EVENTS */
+const bodyEl = document.getElementsByTagName('body')[0];
+
 const listButton = document.querySelector('#header-list-button');
 const listCloseButton = document.querySelector('#nav-list-close-button');
+const navList = document.querySelector('.nav-list');
 
 const createRecipeButton = document.querySelector('#create-recipe-button');
 const uploadCloseButton = document.querySelector('#upload-close-button');
-
-const navList = document.querySelector('.nav-list');
-const navSection = document.querySelector('.nav-list-section');
 const uploadWindow = document.querySelector('.upload-recipe-window');
 
-const bodyEl = document.getElementsByTagName('body')[0];
-
 listButton.addEventListener('click', () => {
-  navList.style.display = 'block';
-  navSection.style.display = 'flex';
+  navList.classList.remove('hidden');
   bodyEl.style.overflow = 'hidden';
 });
 
 listCloseButton.addEventListener('click', () => {
-  navList.style.display = 'none';
-  navSection.style.display = 'none';
+  navList.classList.add('hidden');
   bodyEl.style.overflow = 'visible';
 });
 
 createRecipeButton.addEventListener('click', () => {
-  uploadWindow.style.display = 'block';
+  uploadWindow.classList.remove('hidden');
   bodyEl.style.overflow = 'hidden';
 });
 
 uploadCloseButton.addEventListener('click', () => {
-  uploadWindow.style.display = 'none';
+  uploadWindow.classList.add('hidden');
   bodyEl.style.overflow = 'visible';
 });
