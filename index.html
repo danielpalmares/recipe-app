@@ -31,7 +31,7 @@
     <header class="header">
       <button class="header__list-button noSelect" id="header-list-button">
         <svg class="icon header__icon-list">
-          <use xlink:href="src/img/sprite.svg#icon-list"></use>
+          <use xlink:href="src/img/sprite.svg#icon-menu"></use>
         </svg>
       </button>
 
@@ -43,7 +43,7 @@
 
       <button class="header__search-button noSelect">
         <svg class="icon header__icon-magnifying-glass">
-          <use xlink:href="src/img/sprite.svg#icon-magnifying-glass"></use>
+          <use xlink:href="src/img/sprite.svg#icon-search"></use>
         </svg>
       </button>
     </header>
@@ -53,7 +53,7 @@
       <!-- <div class="fav-section__message-container">
         <span class="fav-section__message-text">No favorite recipes yet</span>
         <svg class="icon fav-section__message-icon-sad">
-          <use xlink:href="src/img/sprite.svg#icon-emoji-sad"></use>
+          <use xlink:href="src/img/sprite.svg#icon-frown"></use>
         </svg>
       </div> -->
 
@@ -67,7 +67,7 @@
 
           <button class="fav-section__remove-fav-button noSelect">
             <svg class="icon fav-section__remove-fav-icon-cross">
-              <use xlink:href="src/img/sprite.svg#icon-cross"></use>
+              <use xlink:href="src/img/sprite.svg#icon-x"></use>
             </svg>
           </button>
         </div>
@@ -85,7 +85,7 @@
 
         <button class="custom-card__close-button noSelect">
           <svg class="icon custom-card__close-icon-cross">
-            <use xlink:href="src/img/sprite.svg#icon-cross"></use>
+            <use xlink:href="src/img/sprite.svg#icon-x"></use>
           </svg>
         </button>
 
@@ -243,9 +243,24 @@
               </li>
             </ul>
 
-            <h3 class="heading-tertiary recipe-ingredients__title">
-              How to cook it
-            </h3>
+            <div class="recipe-ingredients__directions">
+              <h3 class="recipe-ingredients__title heading-tertiary">
+                How to cook it
+              </h3>
+
+              <p class="recipe-ingredients-text">
+                This recipe was carefully designed and tested by
+                <span class="recipe-ingredients__publisher">Dann Palmares</span
+                >. Please check out directions at their website.
+              </p>
+
+              <a href="#" class="btn-link" target="_blank">
+                <span>Directions</span>
+                <svg class="icon recipe-ingredients__icon-arrow-right">
+                  <use xlink:href="src/img/sprite.svg#icon-arrow-right"></use>
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
 
@@ -278,12 +293,12 @@
         </div> -->
       </div>
 
-      <!-- <div class="search-message">
+      <div class="search-message">
         <span class="search-message__text"
           >Start by searching for a recipe or an ingredient!</span
         >
         <svg class="icon search-message__message-icon-happy">
-          <use xlink:href="src/img/sprite.svg#icon-emoji-happy"></use>
+          <use xlink:href="src/img/sprite.svg#icon-emoji-smile"></use>
         </svg>
       </div>
 
@@ -292,7 +307,7 @@
           >No recipes found for your query! Please try again.</span
         >
         <svg class="icon search-message__message-icon-happy">
-          <use xlink:href="src/img/sprite.svg#icon-emoji-sad"></use>
+          <use xlink:href="src/img/sprite.svg#icon-frown"></use>
         </svg>
       </div>
 
@@ -300,14 +315,14 @@
         <button class="show-more__button noSelect">
           <span class="show-more__text">Show more</span>
           <svg class="icon show-more__icon-chevron">
-            <use xlink:href="src/img/sprite.svg#icon-chevron-thin-down"></use>
+            <use xlink:href="src/img/sprite.svg#icon-arrow-down"></use>
           </svg>
         </button>
       </div>
 
       <div class="spinner">
         <div class="spinner__in"></div>
-      </div> -->
+      </div>
     </section>
 
     <!-- form starting area -->

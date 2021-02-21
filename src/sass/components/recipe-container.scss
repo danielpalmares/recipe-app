@@ -98,6 +98,26 @@
       &__description {
         font-size: $font-size-medium;
       }
+
+      /* DIRECTIONS */
+      &__directions {
+      }
+
+      &-text {
+        padding: 0 1rem;
+        font-size: $font-size-medium;
+      }
+
+      &__publisher {
+        font-weight: 600;
+      }
+
+      &__icon-arrow-right {
+        width: 2rem;
+        height: 2rem;
+        fill: $color-white-light-secondary;
+        margin-left: 0.5rem;
+      }
     }
 
     &__name {

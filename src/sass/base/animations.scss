@@ -1,24 +1,24 @@
 @keyframes borderIn {
   0% {
-    border-left-color: $color-blue;
+    border-left-color: $color-primary;
   }
 
   33% {
-    border-left-color: $color-blue;
-    border-top-color: $color-blue;
+    border-left-color: $color-primary;
+    border-top-color: $color-primary;
   }
 
   66% {
-    border-left-color: $color-blue;
-    border-top-color: $color-blue;
-    border-right-color: $color-blue;
+    border-left-color: $color-primary;
+    border-top-color: $color-primary;
+    border-right-color: $color-primary;
   }
 
   100% {
-    border-left-color: $color-blue;
-    border-top-color: $color-blue;
-    border-right-color: $color-blue;
-    border-bottom-color: $color-blue;
+    border-left-color: $color-primary;
+    border-top-color: $color-primary;
+    border-right-color: $color-primary;
+    border-bottom-color: $color-primary;
   }
 }
 

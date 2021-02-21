@@ -42,3 +42,30 @@
 .hidden {
   display: none;
 }
+
+.btn-link:link,
+.btn-link:visited {
+  width: 15rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include bgGradient;
+  padding: 1rem 2rem;
+  margin: 2rem auto;
+  border-radius: 5rem;
+
+  font-size: $font-size-medium;
+  font-weight: 600;
+  color: $color-white-light-secondary;
+  letter-spacing: 0.1rem;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.btn-link:hover {
+  @include bgGradientOpposite;
+}
+
+.btn-link:active {
+  @include clickAnimation;
+}
