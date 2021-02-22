@@ -57,7 +57,6 @@ const showRecipe = async function () {
       sourceURL: recipe.source_url,
       title: recipe.title,
     };
-
     console.log(res, resData, recipeData);
 
     // 2) rendering the recipe
