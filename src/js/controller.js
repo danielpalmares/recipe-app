@@ -49,7 +49,7 @@ const showRecipe = async function () {
 
             <div class="recipe-container__timing-servings">
               <svg class="icon recipe-container__icon-clock">
-                <use href="${icons}#icon-clock"></use>
+                <use xlink:href="${icons}#icon-clock"></use>
               </svg>
               <span class="recipe-container__timing">${
                 recipeData.cookingTime
@@ -58,7 +58,7 @@ const showRecipe = async function () {
 
             <button class="recipe-container__fav-button noSelect">
               <svg class="icon recipe-container__fav-icon-heart">
-                <use href="${icons}#icon-heart"></use>
+                <use xlink:href="${icons}#icon-heart"></use>
               </svg>
             </button>
           </div>
@@ -74,7 +74,7 @@ const showRecipe = async function () {
                   <li class="recipe-ingredients__ingredient">
                     <div class="recipe-ingredients__wrapper">
                       <svg class="icon recipe-ingredients__icon-check">
-                        <use href="${icons}#icon-check"></use>
+                        <use xlink:href="${icons}#icon-check"></use>
                       </svg>
                       <div class="recipe-ingredients__quantity">${ing.quantity}</div>
                       <span class="recipe-ingredients__unit">${ing.unit}</span>
@@ -105,7 +105,7 @@ const showRecipe = async function () {
               }" class="btn-link noSelect" target="_blank">
                 <span>Directions</span>
                 <svg class="icon recipe-ingredients__icon-arrow-right">
-                  <use href="${icons}#icon-arrow-right"></use>
+                  <use xlink:href="${icons}#icon-arrow-right"></use>
                 </svg>
               </a>
             </div>
