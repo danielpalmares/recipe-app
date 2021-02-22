@@ -1,20 +1,14 @@
 {
   "name": "recipe-app",
   "version": "1.0.0",
-  "main": "controller.js",
+  "main": "index.js",
   "repository": "git@github.com:danielpalmares/recipe-app.git",
-  "author": "Daniel Palmares <danielpalmares100@gmail.com>",
+  "author": "Daniel Palmares",
   "license": "MIT",
   "scripts": {
-    "dev": "parcel index.html",
-    "build": "parcel build index.html"
+    "scss": "node-sass src/sass/main.scss dist/main.css -w"
   },
   "dependencies": {
-    "core-js": "^3.9.0",
-    "node-sass": "^4.5.3",
-    "regenerator-runtime": "^0.13.7"
-  },
-  "devDependencies": {
-    "parcel-bundler": "^1.12.4"
+    "node-sass": "^4.5.3"
   }
 }
