@@ -1,7 +1,7 @@
 @include respond(phone) {
   .recipe-container {
     width: 31rem;
-    // height: 21rem;
+    height: auto;
     border-radius: 0.5rem;
     @include shadow;
     margin: 2rem 0;
@@ -9,7 +9,7 @@
     position: relative;
 
     &__image-container {
-      height: 80%;
+      height: 25rem;
       overflow: hidden;
     }
 
@@ -37,11 +37,14 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      height: 4rem;
+      height: auto;
+      padding: 1rem;
     }
 
     &__timing-servings {
       display: flex;
+      align-items: center;
+      margin: 0 1rem;
     }
 
     &__icon-clock {
@@ -57,7 +60,6 @@
     }
 
     .recipe-ingredients {
-      display: flex;
       flex-direction: column;
 
       &__title {
@@ -132,15 +134,18 @@
     }
 
     &__name {
-      margin-left: 1rem;
+      max-width: 16rem;
       font-size: $font-size-medium;
       font-weight: 600;
+
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
     }
 
     &__fav-button {
       height: 2rem;
       width: 2rem;
-      margin-right: 1rem;
       border: none;
       background: none;
       outline: none;

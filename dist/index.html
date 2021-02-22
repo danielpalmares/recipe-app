@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/main.2026268b.css">
+    <script src="/controller.e87f5190.js" async=""></script>
+
+    <title>Recipe App</title>
+  <script src="/main.2026268b.js"></script></head>
+
+  <body>
+    <!-- floating button starting area -->
+    <div class="create-recipe noSelect">
+      <button class="create-recipe__button" id="create-recipe-button">
+        <svg class="icon create-recipe__icon-plus">
+          <use xlink:href="/sprite.658acd18.svg#icon-plus"></use>
+        </svg>
+      </button>
+    </div>
+
+    <!-- header starting area -->
+    <header class="header">
+      <button class="header__list-button noSelect" id="header-list-button">
+        <svg class="icon header__icon-list">
+          <use xlink:href="/sprite.658acd18.svg#icon-menu"></use>
+        </svg>
+      </button>
+
+      <input type="text" class="header__search-input" placeholder="Recipes, ingredients...">
+
+      <button class="header__search-button noSelect">
+        <svg class="icon header__icon-magnifying-glass">
+          <use xlink:href="/sprite.658acd18.svg#icon-search"></use>
+        </svg>
+      </button>
+    </header>
+
+    <!-- fav section starting area -->
+    <section class="fav-section">
+      <!-- <div class="fav-section__message-container">
+        <span class="fav-section__message-text">No favorite recipes yet</span>
+        <svg class="icon fav-section__message-icon-sad">
+          <use xlink:href="src/img/sprite.svg#icon-frown"></use>
+        </svg>
+      </div> -->
+
+      <div class="fav-section__recipe-container noSelect">
+        <div class="fav-section__recipe-image-container">
+          <img src="/bread-image.bf272969.jpg" class="fav-section__recipe-image" alt="Recipe photo">
+
+          <button class="fav-section__remove-fav-button noSelect">
+            <svg class="icon fav-section__remove-fav-icon-cross">
+              <use xlink:href="/sprite.658acd18.svg#icon-x"></use>
+            </svg>
+          </button>
+        </div>
+        <span class="fav-section__recipe-name">Bread</span>
+      </div>
+    </section>
+
+    <!-- main section starting area -->
+    <section class="main-section">
+      <!-- <div class="custom-card">
+        <div class="custom-card__text-container">
+          <h1 class="heading-primary">Personalize</h1>
+          <span class="custom-card__text">Your recommendations</span>
+        </div>
+
+        <button class="custom-card__close-button noSelect">
+          <svg class="icon custom-card__close-icon-cross">
+            <use xlink:href="src/img/sprite.svg#icon-x"></use>
+          </svg>
+        </button>
+
+        <button class="custom-card__start-button noSelect">
+          Start personalizing
+        </button>
+      </div>
+
+      <div class="recipe-container">
+        <div class="recipe-container__image-container noSelect">
+          <img
+            src="src/img/bread-image.jpg"
+            class="recipe-container__image"
+            alt="Recipe photo"
+          />
+        </div>
+
+        <div class="recipe-container__info">
+          <span class="recipe-container__name">Bread</span>
+
+          <button class="recipe-container__fav-button noSelect">
+            <svg class="icon recipe-container__fav-icon-heart">
+              <use xlink:href="src/img/sprite.svg#icon-heart"></use>
+            </svg>
+          </button>
+        </div>
+
+        <div class="recipe-container__random-text">
+          <span class="recipe-container__text">Recipe of the day</span>
+        </div>
+      </div> -->
+    </section>
+
+    <!-- recipe section starting area -->
+    <section class="recipe-section">
+      <div class="recipe-container">
+        <div class="recipe-container__image-container noSelect">
+          <img src="/bread-image.bf272969.jpg" class="recipe-container__image" alt="Recipe photo">
+        </div>
+
+        <div class="recipe-container__info">
+          <div class="recipe-container__name-fav">
+            <span class="recipe-container__name">Bread</span>
+
+            <div class="recipe-container__timing-servings">
+              <svg class="icon recipe-container__icon-clock">
+                <use xlink:href="/sprite.658acd18.svg#icon-clock"></use>
+              </svg>
+              <span class="recipe-container__timing"> 48 minutes</span>
+            </div>
+
+            <button class="recipe-container__fav-button noSelect">
+              <svg class="icon recipe-container__fav-icon-heart">
+                <use xlink:href="/sprite.658acd18.svg#icon-heart"></use>
+              </svg>
+            </button>
+          </div>
+
+          <div class="recipe-ingredients">
+            <h3 class="heading-tertiary recipe-ingredients__title">
+              Recipe ingredients
+            </h3>
+            <ul class="recipe-ingredients__list">
+              <li class="recipe-ingredients__ingredient">
+                <div class="recipe-ingredients__wrapper">
+                  <svg class="icon recipe-ingredients__icon-check">
+                    <use xlink:href="/sprite.658acd18.svg#icon-check"></use>
+                  </svg>
+                  <div class="recipe-ingredients__quantity">300</div>
+                  <span class="recipe-ingredients__unit">oz</span>
+                </div>
+
+                <div class="recipe-ingredients__description">plain for</div>
+              </li>
+
+              <li class="recipe-ingredients__ingredient">
+                <div class="recipe-ingredients__wrapper">
+                  <svg class="icon recipe-ingredients__icon-check">
+                    <use xlink:href="/sprite.658acd18.svg#icon-check"></use>
+                  </svg>
+                  <div class="recipe-ingredients__quantity">300</div>
+                  <span class="recipe-ingredients__unit">oz</span>
+                </div>
+
+                <div class="recipe-ingredients__description">plain for</div>
+              </li>
+
+              <li class="recipe-ingredients__ingredient">
+                <div class="recipe-ingredients__wrapper">
+                  <svg class="icon recipe-ingredients__icon-check">
+                    <use xlink:href="/sprite.658acd18.svg#icon-check"></use>
+                  </svg>
+                  <div class="recipe-ingredients__quantity">300</div>
+                  <span class="recipe-ingredients__unit">oz</span>
+                </div>
+
+                <div class="recipe-ingredients__description">plain for</div>
+              </li>
+
+              <li class="recipe-ingredients__ingredient">
+                <div class="recipe-ingredients__wrapper">
+                  <svg class="icon recipe-ingredients__icon-check">
+                    <use xlink:href="/sprite.658acd18.svg#icon-check"></use>
+                  </svg>
+                  <div class="recipe-ingredients__quantity">300</div>
+                  <span class="recipe-ingredients__unit">oz</span>
+                </div>
+
+                <div class="recipe-ingredients__description">plain for</div>
+              </li>
+
+              <li class="recipe-ingredients__ingredient">
+                <div class="recipe-ingredients__wrapper">
+                  <svg class="icon recipe-ingredients__icon-check">
+                    <use xlink:href="/sprite.658acd18.svg#icon-check"></use>
+                  </svg>
+                  <div class="recipe-ingredients__quantity">300</div>
+                  <span class="recipe-ingredients__unit">oz</span>
+                </div>
+
+                <div class="recipe-ingredients__description">plain for</div>
+              </li>
+
+              <li class="recipe-ingredients__ingredient">
+                <div class="recipe-ingredients__wrapper">
+                  <svg class="icon recipe-ingredients__icon-check">
+                    <use xlink:href="/sprite.658acd18.svg#icon-check"></use>
+                  </svg>
+                  <div class="recipe-ingredients__quantity">300</div>
+                  <span class="recipe-ingredients__unit">oz</span>
+                </div>
+
+                <div class="recipe-ingredients__description">plain for</div>
+              </li>
+
+              <li class="recipe-ingredients__ingredient">
+                <div class="recipe-ingredients__wrapper">
+                  <svg class="icon recipe-ingredients__icon-check">
+                    <use xlink:href="/sprite.658acd18.svg#icon-check"></use>
+                  </svg>
+                  <div class="recipe-ingredients__quantity">300</div>
+                  <span class="recipe-ingredients__unit">oz</span>
+                </div>
+
+                <div class="recipe-ingredients__description">plain for</div>
+              </li>
+
+              <li class="recipe-ingredients__ingredient">
+                <div class="recipe-ingredients__wrapper">
+                  <svg class="icon recipe-ingredients__icon-check">
+                    <use xlink:href="/sprite.658acd18.svg#icon-check"></use>
+                  </svg>
+                  <div class="recipe-ingredients__quantity">300</div>
+                  <span class="recipe-ingredients__unit">oz</span>
+                </div>
+
+                <div class="recipe-ingredients__description">plain for</div>
+              </li>
+            </ul>
+
+            <div class="recipe-ingredients__directions">
+              <h3 class="recipe-ingredients__title heading-tertiary">
+                How to cook it
+              </h3>
+
+              <p class="recipe-ingredients-text">
+                This recipe was carefully designed and tested by
+                <span class="recipe-ingredients__publisher">Dann Palmares</span>. Please check out directions at their website.
+              </p>
+
+              <a href="#" class="btn-link noSelect" target="_blank">
+                <span>Directions</span>
+                <svg class="icon recipe-ingredients__icon-arrow-right">
+                  <use xlink:href="/sprite.658acd18.svg#icon-arrow-right"></use>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="recipe-container__random-text">
+          <span class="recipe-container__text">Recipe of the day</span>
+        </div> -->
+      </div>
+
+      <div class="search-message">
+        <span class="search-message__text">Start by searching for a recipe or an ingredient!</span>
+        <svg class="icon search-message__message-icon-happy">
+          <use xlink:href="/sprite.658acd18.svg#icon-emoji-smile"></use>
+        </svg>
+      </div>
+
+      <div class="search-message">
+        <span class="search-message__text">No recipes found for your query! Please try again.</span>
+        <svg class="icon search-message__message-icon-happy">
+          <use xlink:href="/sprite.658acd18.svg#icon-frown"></use>
+        </svg>
+      </div>
+
+      <div class="show-more">
+        <button class="show-more__button noSelect">
+          <span class="show-more__text">Show more</span>
+          <svg class="icon show-more__icon-chevron">
+            <use xlink:href="/sprite.658acd18.svg#icon-arrow-down"></use>
+          </svg>
+        </button>
+      </div>
+
+      <div class="spinner">
+        <div class="spinner__in"></div>
+      </div>
+    </section>
+
+    <!-- form starting area -->
+    <div class="upload-recipe-window hidden">
+      <form action="#" class="upload">
+        <div class="upload__column">
+          <div class="wrapper-title">
+            <h3 class="heading-tertiary title-an">Recipe data</h3>
+            <button class="wrapper-title__close-button noSelect" id="upload-close-button">
+              <svg class="icon wrapper-title__close-icon">
+                <use xlink:href="/sprite.658acd18.svg#icon-x"></use>
+              </svg>
+            </button>
+          </div>
+
+          <div class="wrapper-label">
+            <label>Title</label>
+            <input value="Teste25" required="" name="title" type="text">
+          </div>
+
+          <div class="wrapper-label">
+            <label>URL</label>
+            <input value="Teste25" required="" name="sourceUrl" type="text">
+          </div>
+
+          <div class="wrapper-label">
+            <label>Image URL</label>
+            <input value="Teste25" required="" name="image" type="text">
+          </div>
+
+          <div class="wrapper-label">
+            <label>Publisher</label>
+            <input value="Teste25" required="" name="publisher" type="text">
+          </div>
+
+          <div class="wrapper-label">
+            <label>Prep time</label>
+            <input value="25" required="" name="cookingTime" type="number">
+          </div>
+
+          <div class="wrapper-label">
+            <label>Servings</label>
+            <input value="25" required="" name="servings" type="number">
+          </div>
+        </div>
+
+        <div class="upload__column">
+          <div class="wrapper-title">
+            <h3 class="heading-tertiary title-an">Ingredients</h3>
+          </div>
+
+          <div class="wrapper-label">
+            <label>Ingredient 1</label>
+            <input value="0.5,kg,Rice" type="text" required="" name="ingredient-1" placeholder="Format: 'Qt,Unit,Desc'">
+          </div>
+
+          <div class="wrapper-label">
+            <label>Ingredient 2</label>
+            <input value="1,,Avocado" type="text" name="ingredient-2" placeholder="Format: 'Qt,Unit,Desc'">
+          </div>
+
+          <div class="wrapper-label">
+            <label>Ingredient 3</label>
+            <input value=",,Salt" type="text" name="ingredient-3" placeholder="Format: 'Qt,Unit,Desc'">
+          </div>
+
+          <div class="wrapper-label">
+            <label>Ingredient 4</label>
+            <input type="text" name="ingredient-4" placeholder="Format: 'Qt,Unit,Desc'">
+          </div>
+
+          <div class="wrapper-label">
+            <label>Ingredient 5</label>
+            <input type="text" name="ingredient-5" placeholder="Format: 'Qt,Unit,Desc'">
+          </div>
+
+          <div class="wrapper-label">
+            <label>Ingredient 6</label>
+            <input type="text" name="ingredient-6" placeholder="Format: 'Qt,Unit,Desc'">
+          </div>
+        </div>
+
+        <button class="upload-button noSelect">
+          <span class="upload-button__text">Upload</span>
+          <svg class="icon upload-button__send-icon">
+            <use xlink:href="/sprite.658acd18.svg#icon-upload-cloud"></use>
+          </svg>
+        </button>
+      </form>
+    </div>
+
+    <!-- nav list starting area -->
+    <nav class="nav-list hidden">
+      <header class="nav-list__header">
+        <h1 class="heading-primary">Your recipes</h1>
+
+        <button class="nav-list__close-button noSelect" id="nav-list-close-button">
+          <svg class="icon nav-list__close-icon">
+            <use xlink:href="/sprite.658acd18.svg#icon-x"></use>
+          </svg>
+        </button>
+      </header>
+
+      <section class="nav-list__section">
+        <!-- <div class="nav-list__message-container">
+          <span class="nav-list__message-text"
+            >You don't have any recipe yet</span
+          >
+          <svg class="icon nav-list__message-icon">
+            <use xlink:href="src/img/sprite.svg#icon-frown"></use>
+          </svg>
+        </div> -->
+
+        <div class="nav-list__recipe-container noSelect">
+          <div class="nav-list__image-container">
+            <img src="/bread-image.bf272969.jpg" alt="Recipe photo" class="nav-list__image">
+          </div>
+
+          <div class="nav-list__text-container">
+            <h3 class="heading-tertiary">Bread</h3>
+            <p class="nav-list__recipe-description">Made with love</p>
+          </div>
+        </div>
+      </section>
+    </nav>
+
+    <!-- footer starting area -->
+    <footer class="footer">
+      <p class="footer__copy-text">
+        &copy; Copyright by Daniel Palmares. Use for learning or your portfolio.
+        Don't use to teach. Don't claim as your own.
+      </p>
+    </footer>
+  </body>
+</html>

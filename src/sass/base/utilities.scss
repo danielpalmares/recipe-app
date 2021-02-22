@@ -39,10 +39,6 @@
   }
 }
 
-.hidden {
-  display: none;
-}
-
 .btn-link:link,
 .btn-link:visited {
   width: 15rem;
@@ -68,4 +64,12 @@
 
 .btn-link:active {
   @include clickAnimation;
+}
+
+.hidden {
+  display: none;
+}
+
+.activeFlex {
+  display: flex;
 }
