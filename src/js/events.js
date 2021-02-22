@@ -2,6 +2,7 @@ export default function events() {
   const bodyEl = document.getElementsByTagName('body')[0];
 
   const listButton = document.querySelector('#header-list-button');
+
   const listCloseButton = document.querySelector('#nav-list-close-button');
   const navList = document.querySelector('.nav-list');
 
