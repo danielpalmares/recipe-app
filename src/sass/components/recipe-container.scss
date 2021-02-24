@@ -21,7 +21,8 @@
       transition: transform 0.5s;
     }
 
-    &__image:active {
+    &__image:active,
+    &__image:hover {
       transform: scale(1);
     }
 

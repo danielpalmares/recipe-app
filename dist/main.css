@@ -182,7 +182,7 @@
       cursor: pointer;
       transform: scale(1.1);
       transition: transform 0.5s; }
-    .recipe-container__image:active {
+    .recipe-container__image:active, .recipe-container__image:hover {
       transform: scale(1); }
     .recipe-container__info {
       display: flex;
@@ -311,7 +311,7 @@
   .show-more {
     width: 12.8rem;
     height: 4rem;
-    margin: 4rem 0;
+    margin: 2rem auto;
     background: linear-gradient(to right, #0575e6, #00f260);
     display: flex;
     justify-content: center;

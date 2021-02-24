@@ -38,33 +38,103 @@ function events() {
 /* APPLICATION CONTENT */
 const recipeSection = document.querySelector('.recipe-section');
 
-const showRecipe = async function () {
+const renderSpinner = function (parentEl) {
+  const markup = `
+    <div class="spinner">
+      <div class="spinner__in"></div>
+    </div>
+  `;
+  parentEl.innerHTML = '';
+  parentEl.insertAdjacentHTML('afterbegin', markup);
+};
+
+const headerInput = document.getElementById('header-input');
+const headerSearchButton = document.getElementById('header-search-button');
+
+headerSearchButton.addEventListener('click', function (e) {
+  const recipeName = headerInput.value;
+  // showRecipe(recipeName);
+});
+
+const sliceRecipes = function (recipeArr, start, end) {
+  const recipesSliced = recipeArr.slice(start, end);
+
+  return recipesSliced;
+};
+
+const showRecipesBySearch = async function () {
   try {
-    // 1) fetching the recipe
+    // 1) rendering spinner
+    renderSpinner(recipeSection);
+
+    // 2) fetching the recipe
     const res = await fetch(
-      'https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886'
+      `https://forkify-api.herokuapp.com/api/v2/recipes?search=pasta`
     );
     const resData = await res.json();
+    const { recipes } = resData.data;
 
-    const { recipe } = resData.data;
-    const recipeData = {
-      cookingTime: recipe.cooking_time,
-      id: recipe.id,
-      imageURL: recipe.image_url,
-      ingredients: recipe.ingredients,
-      publisher: recipe.publisher,
-      servings: recipe.servings,
-      sourceURL: recipe.source_url,
-      title: recipe.title,
+    let curPage = 0;
+    let maxPage = 10;
+    let maxLength = recipes.length;
+    console.log(maxLength, curPage);
+    let position = 'afterBegin';
+
+    recipeSection.innerHTML = '';
+
+    renderRecipes(recipes, curPage, maxPage, position);
+    insertButton();
+
+    const btnShowMore = document.querySelector('.show-more__button');
+    btnShowMore.addEventListener('click', function (e) {
+      curPage += 10;
+      maxPage += 10;
+      position = 'beforeEnd';
+      renderRecipes(recipes, curPage, maxPage, position);
+      console.log(maxLength, curPage);
+    });
+  } catch (err) {
+    alert(err);
+  }
+};
+
+showRecipesBySearch();
+events();
+
+/***************************************
+ ***********> VIEW
+ ***************************************/
+const insertButton = function () {
+  const btnMarkup = `
+    <div class="show-more">
+      <button class="show-more__button noSelect">
+      <span class="show-more__text">Show more</span>
+      <svg class="icon show-more__icon-chevron">
+        <use xlink:href="src/img/sprite.svg#icon-arrow-down"></use>
+      </svg>
+      </button>
+    </div>
+  `;
+
+  recipeSection.insertAdjacentHTML('afterEnd', btnMarkup);
+};
+
+const renderRecipes = function (recipesArr, curPage, maxPage, position) {
+  const recipesNewArr = sliceRecipes(recipesArr, curPage, maxPage);
+
+  recipesNewArr.map(rec => {
+    const recObj = {
+      id: rec.id,
+      publisher: rec.publisher,
+      image: rec.image_url,
+      title: rec.title,
     };
-    console.log(res, resData, recipeData);
 
-    // 2) rendering the recipe
-    const markup = `
+    const recipeMarkup = `
       <div class="recipe-container">
         <div class="recipe-container__image-container noSelect">
           <img
-            src="${recipeData.imageURL}"
+            src="${recObj.image}"
             class="recipe-container__image"
             id="recipe-image"
             alt="Recipe photo"
@@ -73,16 +143,7 @@ const showRecipe = async function () {
 
         <div class="recipe-container__info">
           <div class="recipe-container__name-fav">
-            <span class="recipe-container__name">${recipeData.title}</span>
-
-            <div class="recipe-container__timing-servings">
-              <svg class="icon recipe-container__icon-clock">
-                <use xlink:href="src/img/sprite.svg#icon-clock"></use>
-              </svg>
-              <span class="recipe-container__timing">${
-                recipeData.cookingTime
-              } min</span>
-            </div>
+            <span class="recipe-container__name">${recObj.title}</span>
 
             <button class="recipe-container__fav-button noSelect">
               <svg class="icon recipe-container__fav-icon-heart">
@@ -90,76 +151,9 @@ const showRecipe = async function () {
               </svg>
             </button>
           </div>
-
-          <div class="recipe-ingredients hidden">
-            <h3 class="heading-tertiary recipe-ingredients__title">
-              Recipe ingredients
-            </h3>
-            <ul class="recipe-ingredients__list">
-              ${recipeData.ingredients
-                .map(ing => {
-                  return `
-                  <li class="recipe-ingredients__ingredient">
-                    <div class="recipe-ingredients__wrapper">
-                      <svg class="icon recipe-ingredients__icon-check">
-                        <use xlink:href="src/img/sprite.svg#icon-check"></use>
-                      </svg>
-                      <div class="recipe-ingredients__quantity">${ing.quantity}</div>
-                      <span class="recipe-ingredients__unit">${ing.unit}</span>
-                    </div>
-
-                    <div class="recipe-ingredients__description">${ing.description}</div>
-                  </li>
-                `;
-                })
-                .join('')}
-            </ul>
-
-            <div class="recipe-ingredients__directions">
-              <h3 class="recipe-ingredients__title heading-tertiary">
-                How to cook it
-              </h3>
-
-              <p class="recipe-ingredients-text">
-                This recipe was carefully designed and tested by
-                <span class="recipe-ingredients__publisher">${
-                  recipeData.publisher
-                }</span
-                >. Please check out directions at their website.
-              </p>
-
-              <a href="${
-                recipeData.sourceURL
-              }" class="btn-link noSelect" target="_blank">
-                <span>Directions</span>
-                <svg class="icon recipe-ingredients__icon-arrow-right">
-                  <use xlink:href="src/img/sprite.svg#icon-arrow-right"></use>
-                </svg>
-              </a>
-            </div>
-          </div>
         </div>
       </div>`;
-    recipeSection.innerHTML = '';
-    recipeSection.insertAdjacentHTML('afterbegin', markup);
 
-    const recipeImgToggle = document.getElementById('recipe-image');
-    const recipeInfoSection = document.querySelector('.recipe-ingredients');
-
-    recipeImgToggle.addEventListener('click', function (e) {
-      e.preventDefault();
-      if (recipeInfoSection.classList.contains('hidden')) {
-        recipeInfoSection.classList.remove('hidden');
-        recipeInfoSection.classList.add('activeFlex');
-      } else if (recipeInfoSection.classList.contains('activeFlex')) {
-        recipeInfoSection.classList.remove('activeFlex');
-        recipeInfoSection.classList.add('hidden');
-      }
-    });
-  } catch (err) {
-    alert(err);
-  }
+    recipeSection.insertAdjacentHTML(`${position}`, recipeMarkup);
+  });
 };
-
-showRecipe();
-events();
