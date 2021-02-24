@@ -1,17 +1,23 @@
-/* DOM EVENTS */
+/***************************************
+ ***********> DOM CONTENT
+ ***************************************/
+const bodyEl = document.getElementsByTagName('body')[0];
 
-function events() {
-  const bodyEl = document.getElementsByTagName('body')[0];
+const listButton = document.querySelector('#header-list-button');
 
-  const listButton = document.querySelector('#header-list-button');
+const listCloseButton = document.querySelector('#nav-list-close-button');
+const navList = document.querySelector('.nav-list');
 
-  const listCloseButton = document.querySelector('#nav-list-close-button');
-  const navList = document.querySelector('.nav-list');
+const createRecipeButton = document.querySelector('#create-recipe-button');
+const uploadCloseButton = document.querySelector('#upload-close-button');
+const uploadWindow = document.querySelector('.upload-recipe-window');
 
-  const createRecipeButton = document.querySelector('#create-recipe-button');
-  const uploadCloseButton = document.querySelector('#upload-close-button');
-  const uploadWindow = document.querySelector('.upload-recipe-window');
+const recipeSection = document.querySelector('.recipe-section');
 
+const headerInput = document.getElementById('header-input');
+const headerSearchButton = document.getElementById('header-search-button');
+
+const events = function () {
   listButton.addEventListener('click', () => {
     navList.classList.remove('hidden');
     bodyEl.style.overflow = 'hidden';
@@ -31,13 +37,36 @@ function events() {
     uploadWindow.classList.add('hidden');
     bodyEl.style.overflow = 'visible';
   });
-}
 
-// search url: https://forkify-api.herokuapp.com/api/v2/recipes?search=avocado
+  headerSearchButton.addEventListener('click', function (e) {
+    const recipeName = headerInput.value;
+    // showRecipe(recipeName);
+  });
+};
 
-/* APPLICATION CONTENT */
-const recipeSection = document.querySelector('.recipe-section');
+/***************************************
+ ***********> MAGIC VARIABLES
+ ***************************************/
+const afterBegin = 'afterBegin';
+const beforeEnd = 'beforeEnd';
+let page = 1;
 
+/***************************************
+ ***********> HELPERS
+ ***************************************/
+const sliceRecipes = function (recipeArr, start, end) {
+  const recipesSliced = recipeArr.slice(start, end);
+
+  return recipesSliced;
+};
+
+/***************************************
+ ***********> MODEL
+ ***************************************/
+
+/***************************************
+ ***********> VIEW
+ ***************************************/
 const renderSpinner = function (parentEl) {
   const markup = `
     <div class="spinner">
@@ -48,62 +77,6 @@ const renderSpinner = function (parentEl) {
   parentEl.insertAdjacentHTML('afterbegin', markup);
 };
 
-const headerInput = document.getElementById('header-input');
-const headerSearchButton = document.getElementById('header-search-button');
-
-headerSearchButton.addEventListener('click', function (e) {
-  const recipeName = headerInput.value;
-  // showRecipe(recipeName);
-});
-
-const sliceRecipes = function (recipeArr, start, end) {
-  const recipesSliced = recipeArr.slice(start, end);
-
-  return recipesSliced;
-};
-
-const showRecipesBySearch = async function () {
-  try {
-    // 1) rendering spinner
-    renderSpinner(recipeSection);
-
-    // 2) fetching the recipe
-    const res = await fetch(
-      `https://forkify-api.herokuapp.com/api/v2/recipes?search=pasta`
-    );
-    const resData = await res.json();
-    const { recipes } = resData.data;
-
-    let curPage = 0;
-    let maxPage = 10;
-    let maxLength = recipes.length;
-    console.log(maxLength, curPage);
-    let position = 'afterBegin';
-
-    recipeSection.innerHTML = '';
-
-    renderRecipes(recipes, curPage, maxPage, position);
-    insertButton();
-
-    const btnShowMore = document.querySelector('.show-more__button');
-    btnShowMore.addEventListener('click', function (e) {
-      curPage += 10;
-      maxPage += 10;
-      position = 'beforeEnd';
-      renderRecipes(recipes, curPage, maxPage, position);
-      console.log(maxLength, curPage);
-    });
-  } catch (err) {
-    alert(err);
-  }
-};
-
-showRecipesBySearch();
-events();
-
-/***************************************
- ***********> VIEW
- ***************************************/
 const insertButton = function () {
   const btnMarkup = `
     <div class="show-more">
@@ -119,7 +92,10 @@ const insertButton = function () {
   recipeSection.insertAdjacentHTML('afterEnd', btnMarkup);
 };
 
-const renderRecipes = function (recipesArr, curPage, maxPage, position) {
+const renderRecipesBySearch = function (recipesArr, page, position) {
+  const curPage = (page - 1) * 10;
+  const maxPage = page * 10;
+
   const recipesNewArr = sliceRecipes(recipesArr, curPage, maxPage);
 
   recipesNewArr.map(rec => {
@@ -157,3 +133,40 @@ const renderRecipes = function (recipesArr, curPage, maxPage, position) {
     recipeSection.insertAdjacentHTML(`${position}`, recipeMarkup);
   });
 };
+
+/***************************************
+ ***********> CONTROLLER
+ ***************************************/
+const showRecipesBySearch = async function () {
+  try {
+    // 1) rendering spinner
+    renderSpinner(recipeSection);
+
+    // 2) fetching the recipe
+    const res = await fetch(
+      `https://forkify-api.herokuapp.com/api/v2/recipes?search=carrot`
+    );
+    const resData = await res.json();
+    const { recipes } = resData.data;
+
+    // 3) rendering recipes
+    recipeSection.innerHTML = '';
+    renderRecipesBySearch(recipes, page, afterBegin);
+
+    // 4) rendering show more button
+    insertButton();
+
+    // 5) rendering on show more button
+    const btnShowMore = document.querySelector('.show-more__button');
+
+    btnShowMore.addEventListener('click', () => {
+      page++;
+      renderRecipesBySearch(recipes, page, beforeEnd);
+    });
+  } catch (err) {
+    alert(err);
+  }
+};
+
+showRecipesBySearch();
+events();
