@@ -3,6 +3,7 @@
  ***************************************/
 const SearchAJAX = 'https://forkify-api.herokuapp.com/api/v2/recipes';
 let page = 1;
+let resPerPage = 10;
 
 /***************************************
  ***********> DOM CONTENT
@@ -10,6 +11,8 @@ let page = 1;
 const headerSearchBtn = document.getElementById('header-search-button');
 const headerInput = document.getElementById('header-input');
 const recipeSection = document.querySelector('.recipe-section');
+const afterBegin = 'afterbegin';
+const beforeEnd = 'beforeend';
 
 /***************************************
  ***********> HELPERS
@@ -32,6 +35,7 @@ const state = {
     results: undefined, // this will be a number
     recipes: [],
   },
+  storage: localStorage,
 };
 
 const getSearchQuery = async function (id, handler) {
@@ -59,7 +63,7 @@ const renderSpinner = function () {
     </div> 
   `;
   recipeSection.innerHTML = '';
-  recipeSection.insertAdjacentHTML('afterbegin', spinnerMarkup);
+  recipeSection.insertAdjacentHTML(afterBegin, spinnerMarkup);
 };
 
 const removeSpinner = function () {
@@ -78,11 +82,13 @@ const insertButton = function () {
       </button>
     </div>
   `;
-  recipeSection.insertAdjacentHTML('beforeend', btnMarkup);
+  recipeSection.insertAdjacentHTML('afterend', btnMarkup);
 };
 
 const removeBtn = function () {
   const btn = document.querySelector('#show-more');
+  if (btn === null) return;
+
   btn.parentNode.removeChild(btn);
 };
 
@@ -97,7 +103,7 @@ const renderNoRecMsg = function () {
       </svg>
     </div>
   `;
-  recipeSection.insertAdjacentHTML('afterbegin', noRecMsgMarkup);
+  recipeSection.insertAdjacentHTML(afterBegin, noRecMsgMarkup);
 };
 
 const renderRecipesBySearch = function (recipesArr, page, position) {
@@ -148,9 +154,14 @@ const renderRecipesBySearch = function (recipesArr, page, position) {
 const searchView = function (handler) {
   headerSearchBtn.addEventListener('click', async function (e) {
     e.preventDefault();
+    page = 1;
+    resPerPage = 10;
+
+    removeBtn();
 
     // 1) fetch the data and put it in the state
     await handler(headerInput.value, renderSpinner);
+    console.log(state.search.recipes);
 
     // 2) render the data from state
     controlSearchRecipes();
@@ -165,27 +176,30 @@ const showMoreView = function () {
 
   btnShowMore.addEventListener('click', () => {
     page++;
-    removeBtn();
+    resPerPage += 10;
 
-    renderRecipesBySearch(state.search.recipes, page, 'beforeend');
-    insertButton();
+    renderRecipesBySearch(state.search.recipes, page, beforeEnd);
+
+    if (resPerPage >= state.search.results) removeBtn();
   });
 };
 
 const controlSearchRecipes = function () {
   // 1) rendering recipes
-  if (state.search.results === 0) {
+  if (state.search.results === 0 || headerInput.value === '') {
     removeSpinner();
     renderNoRecMsg();
-  } else if (state.search.results > 0) {
+  }
+  if (state.search.results > 0) {
     removeSpinner();
-    renderRecipesBySearch(state.search.recipes, page, 'afterbegin');
+    renderRecipesBySearch(state.search.recipes, page, afterBegin);
 
     // 2) inserting button
-    insertButton();
-
-    // 3) attaching event to button show more
-    showMoreView();
+    if (document.querySelector('.show-more') === null) {
+      insertButton();
+      // 3) attaching event to button show more
+      showMoreView();
+    }
   }
 };
 
