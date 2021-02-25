@@ -1,95 +1,103 @@
 /***************************************
- ***********> DOM CONTENT
+ ***********> CONFIG VARIABLES
  ***************************************/
-const bodyEl = document.getElementsByTagName('body')[0];
-
-const listButton = document.querySelector('#header-list-button');
-
-const listCloseButton = document.querySelector('#nav-list-close-button');
-const navList = document.querySelector('.nav-list');
-
-const createRecipeButton = document.querySelector('#create-recipe-button');
-const uploadCloseButton = document.querySelector('#upload-close-button');
-const uploadWindow = document.querySelector('.upload-recipe-window');
-
-const recipeSection = document.querySelector('.recipe-section');
-
-const headerInput = document.getElementById('header-input');
-const headerSearchButton = document.getElementById('header-search-button');
-
-const events = function () {
-  listButton.addEventListener('click', () => {
-    navList.classList.remove('hidden');
-    bodyEl.style.overflow = 'hidden';
-  });
-
-  listCloseButton.addEventListener('click', () => {
-    navList.classList.add('hidden');
-    bodyEl.style.overflow = 'visible';
-  });
-
-  createRecipeButton.addEventListener('click', () => {
-    uploadWindow.classList.remove('hidden');
-    bodyEl.style.overflow = 'hidden';
-  });
-
-  uploadCloseButton.addEventListener('click', () => {
-    uploadWindow.classList.add('hidden');
-    bodyEl.style.overflow = 'visible';
-  });
-
-  headerSearchButton.addEventListener('click', function (e) {
-    const recipeName = headerInput.value;
-    // showRecipe(recipeName);
-  });
-};
+const SearchAJAX = 'https://forkify-api.herokuapp.com/api/v2/recipes';
+let page = 1;
 
 /***************************************
- ***********> MAGIC VARIABLES
+ ***********> DOM CONTENT
  ***************************************/
-const afterBegin = 'afterBegin';
-const beforeEnd = 'beforeEnd';
-let page = 1;
+const headerSearchBtn = document.getElementById('header-search-button');
+const headerInput = document.getElementById('header-input');
+const recipeSection = document.querySelector('.recipe-section');
 
 /***************************************
  ***********> HELPERS
  ***************************************/
 const sliceRecipes = function (recipeArr, start, end) {
   const recipesSliced = recipeArr.slice(start, end);
-
   return recipesSliced;
+};
+
+const clearInputField = function (inputEl) {
+  inputEl.value = '';
 };
 
 /***************************************
  ***********> MODEL
  ***************************************/
+const state = {
+  search: {
+    status: undefined, // this will be a string
+    results: undefined, // this will be a number
+    recipes: [],
+  },
+};
+
+const getSearchQuery = async function (id, handler) {
+  try {
+    handler();
+    const res = await fetch(`${SearchAJAX}?search=${id}`);
+    const resData = await res.json();
+    const { recipes } = resData.data;
+
+    state.search.status = resData.status;
+    state.search.results = resData.results;
+    state.search.recipes = recipes;
+  } catch (err) {
+    alert(err);
+  }
+};
 
 /***************************************
  ***********> VIEW
  ***************************************/
-const renderSpinner = function (parentEl) {
-  const markup = `
+const renderSpinner = function () {
+  const spinnerMarkup = `
     <div class="spinner">
       <div class="spinner__in"></div>
-    </div>
+    </div> 
   `;
-  parentEl.innerHTML = '';
-  parentEl.insertAdjacentHTML('afterbegin', markup);
+  recipeSection.innerHTML = '';
+  recipeSection.insertAdjacentHTML('afterbegin', spinnerMarkup);
+};
+
+const removeSpinner = function () {
+  const spinnerEl = document.querySelector('.spinner');
+  spinnerEl.parentNode.removeChild(spinnerEl);
 };
 
 const insertButton = function () {
   const btnMarkup = `
-    <div class="show-more">
+    <div class="show-more" id="show-more">
       <button class="show-more__button noSelect">
-      <span class="show-more__text">Show more</span>
-      <svg class="icon show-more__icon-chevron">
-        <use xlink:href="src/img/sprite.svg#icon-arrow-down"></use>
-      </svg>
+        <span class="show-more__text">Show more</span>
+        <svg class="icon show-more__icon-chevron">
+          <use xlink:href="src/img/sprite.svg#icon-arrow-down"></use>
+        </svg>
       </button>
     </div>
   `;
+  recipeSection.insertAdjacentHTML('beforeend', btnMarkup);
+};
 
-  recipeSection.insertAdjacentHTML('afterEnd', btnMarkup);
+const removeBtn = function () {
+  const btn = document.querySelector('#show-more');
+  btn.parentNode.removeChild(btn);
+};
+
+const renderNoRecMsg = function () {
+  const noRecMsgMarkup = `
+    <div class="search-message">
+      <span class="search-message__text">
+        No recipes found for your query! Please try again.
+      </span>
+      <svg class="icon search-message__message-icon-happy">
+        <use xlink:href="src/img/sprite.svg#icon-frown"></use>
+      </svg>
+    </div>
+  `;
+  recipeSection.insertAdjacentHTML('afterbegin', noRecMsgMarkup);
 };
 
 const renderRecipesBySearch = function (recipesArr, page, position) {
@@ -97,7 +105,6 @@ const renderRecipesBySearch = function (recipesArr, page, position) {
   const maxPage = page * 10;
 
   const recipesNewArr = sliceRecipes(recipesArr, curPage, maxPage);
-
   recipesNewArr.map(rec => {
     const recObj = {
       id: rec.id,
@@ -128,7 +135,8 @@ const renderRecipesBySearch = function (recipesArr, page, position) {
             </button>
           </div>
         </div>
-      </div>`;
+      </div>
+    `;
 
     recipeSection.insertAdjacentHTML(`${position}`, recipeMarkup);
   });
@@ -137,36 +145,51 @@ const renderRecipesBySearch = function (recipesArr, page, position) {
 /***************************************
  ***********> CONTROLLER
  ***************************************/
-const showRecipesBySearch = async function () {
-  try {
-    // 1) rendering spinner
-    renderSpinner(recipeSection);
+const searchView = function (handler) {
+  headerSearchBtn.addEventListener('click', async function (e) {
+    e.preventDefault();
 
-    // 2) fetching the recipe
-    const res = await fetch(
-      `https://forkify-api.herokuapp.com/api/v2/recipes?search=carrot`
-    );
-    const resData = await res.json();
-    const { recipes } = resData.data;
+    // 1) fetch the data and put it in the state
+    await handler(headerInput.value, renderSpinner);
 
-    // 3) rendering recipes
-    recipeSection.innerHTML = '';
-    renderRecipesBySearch(recipes, page, afterBegin);
+    // 2) render the data from state
+    controlSearchRecipes();
 
-    // 4) rendering show more button
+    // 3) clear the input
+    clearInputField(headerInput);
+  });
+};
+
+const showMoreView = function () {
+  const btnShowMore = document.querySelector('.show-more__button');
+
+  btnShowMore.addEventListener('click', () => {
+    page++;
+    removeBtn();
+
+    renderRecipesBySearch(state.search.recipes, page, 'beforeend');
+    insertButton();
+  });
+};
+
+const controlSearchRecipes = function () {
+  // 1) rendering recipes
+  if (state.search.results === 0) {
+    removeSpinner();
+    renderNoRecMsg();
+  } else if (state.search.results > 0) {
+    removeSpinner();
+    renderRecipesBySearch(state.search.recipes, page, 'afterbegin');
+
+    // 2) inserting button
     insertButton();
 
-    // 5) rendering on show more button
-    const btnShowMore = document.querySelector('.show-more__button');
-
-    btnShowMore.addEventListener('click', () => {
-      page++;
-      renderRecipesBySearch(recipes, page, beforeEnd);
-    });
-  } catch (err) {
-    alert(err);
+    // 3) attaching event to button show more
+    showMoreView();
   }
 };
 
-showRecipesBySearch();
-events();
+const init = function () {
+  searchView(getSearchQuery);
+};
+init();
