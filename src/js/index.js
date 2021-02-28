@@ -265,6 +265,9 @@ const searchView = function (handler) {
 
       // 3) clear the input
       clearInputField(headerInput);
+
+      //4 blurring the input
+      headerInput.blur();
     }
   });
 };
