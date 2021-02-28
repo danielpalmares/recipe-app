@@ -2,6 +2,7 @@
  ***********> CONFIG VARIABLES
  ***************************************/
 const SearchAJAX = 'https://forkify-api.herokuapp.com/api/v2/recipes';
+const randomAJAX = 'https://www.themealdb.com/api/json/v1/1/random.php';
 let page = 1;
 let resPerPage = 10;
 
@@ -36,6 +37,7 @@ const state = {
     recipes: [],
   },
   storage: localStorage,
+  randomRecipe: [],
 };
 
 const getSearchQuery = async function (id, handler) {
@@ -48,6 +50,39 @@ const getSearchQuery = async function (id, handler) {
     state.search.status = resData.status;
     state.search.results = resData.results;
     state.search.recipes = recipes;
+  } catch (err) {
+    alert(err);
+  }
+};
+
+const getRandomQuery = async function () {
+  try {
+    const res = await fetch(randomAJAX);
+    const resJSON = await res.json();
+    const data = resJSON.meals[0];
+
+    state.randomRecipe = [
+      {
+        id: data.idMeal,
+        name: data.strMeal,
+        imageUrl: data.strMealThumb,
+        directions: data.strSource,
+        instructions: data.strInstructions,
+        ingredients: [],
+        measures: [],
+      },
+    ];
+
+    for (const key in data) {
+      if (key.includes('Ingredient')) {
+        state.randomRecipe[0].ingredients.push(data[key]);
+      }
+      if (key.includes('Measure')) {
+        state.randomRecipe[0].measures.push(data[key]);
+      }
+    }
+
+    console.log(state.randomRecipe);
   } catch (err) {
     alert(err);
   }
@@ -148,9 +183,50 @@ const renderRecipesBySearch = function (recipesArr, page, position) {
   });
 };
 
+const renderRandomRecipe = function () {
+  const mainSection = document.querySelector('.main-section');
+
+  const randomRecipeMarkup = `
+    <div class="recipe-container">
+      <div class="recipe-container__image-container noSelect">
+        <img
+          src="${state.randomRecipe[0].imageUrl}"
+          class="recipe-container__image"
+          id="recipe-image"
+          alt="Recipe photo"
+        />
+      </div>
+
+      <div class="recipe-container__info">
+        <div class="recipe-container__name-fav">
+          <span class="recipe-container__name">${state.randomRecipe[0].name}</span>
+
+          <button class="recipe-container__fav-button noSelect">
+            <svg class="icon recipe-container__fav-icon-heart">
+              <use xlink:href="src/img/sprite.svg#icon-heart"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="recipe-container__random-text">
+        <span class="recipe-container__text">Random recipe</span>
+      </div>
+    </div>
+  `;
+
+  mainSection.innerHTML = '';
+  mainSection.insertAdjacentHTML('afterbegin', randomRecipeMarkup);
+};
+
 /***************************************
  ***********> CONTROLLER
  ***************************************/
+window.addEventListener('load', async function () {
+  await getRandomQuery();
+  renderRandomRecipe();
+});
+
 const searchView = function (handler) {
   headerSearchBtn.addEventListener('click', async function (e) {
     e.preventDefault();
