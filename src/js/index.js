@@ -245,6 +245,28 @@ const searchView = function (handler) {
     // 3) clear the input
     clearInputField(headerInput);
   });
+
+  document.addEventListener('keydown', async function (e) {
+    const keyName = e.key;
+
+    if (keyName === 'Enter') {
+      e.preventDefault();
+      page = 1;
+      resPerPage = 10;
+
+      removeBtn();
+
+      // 1) fetch the data and put it in the state
+      await handler(headerInput.value, renderSpinner);
+      console.log(state.search.recipes);
+
+      // 2) render the data from state
+      controlSearchRecipes();
+
+      // 3) clear the input
+      clearInputField(headerInput);
+    }
+  });
 };
 
 const showMoreView = function () {
