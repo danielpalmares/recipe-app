@@ -1,8 +1,12 @@
+// search recipes by id https://forkify-api.herokuapp.com/api/v2/recipes/:id
+
 /***************************************
  ***********> CONFIG VARIABLES
  ***************************************/
-const SearchAJAX = 'https://forkify-api.herokuapp.com/api/v2/recipes';
 const randomAJAX = 'https://www.themealdb.com/api/json/v1/1/random.php';
+const searchAJAX = 'https://forkify-api.herokuapp.com/api/v2/recipes';
+const searchIdAJAX = 'https://forkify-api.herokuapp.com/api/v2/recipes';
+
 let page = 1;
 let resPerPage = 10;
 
@@ -14,6 +18,94 @@ const headerInput = document.getElementById('header-input');
 const recipeSection = document.querySelector('.recipe-section');
 const afterBegin = 'afterbegin';
 const beforeEnd = 'beforeend';
+
+const getQueryByID = async function (id) {
+  const res = await fetch(`${searchIdAJAX}/${id}`);
+  const resJSON = await res.json();
+  const { recipe } = resJSON.data;
+
+  state.searchByID.status = resJSON.status;
+  state.searchByID.recipe.ingredients = recipe.ingredients;
+  state.searchByID.recipe.directions = recipe.source_url;
+  state.searchByID.recipe.publisher = recipe.publisher;
+
+  console.log(state);
+};
+
+const renderRecInfo = function (el) {
+  const container = el;
+  const ingredients = state.searchByID.recipe.ingredients;
+
+  const recInfoMarkup = `
+    <div class="recipe-ingredients">
+      <h3 class="heading-tertiary recipe-ingredients__title">
+        Recipe ingredients
+      </h3>
+
+      <ul class="recipe-ingredients__list">
+        ${ingredients
+          .map(ing => {
+            return `
+            <li class="recipe-ingredients__ingredient">
+              <div class="recipe-ingredients__wrapper">
+                <svg class="icon recipe-ingredients__icon-check">
+                  <use xlink:href="src/img/sprite.svg#icon-check"></use>
+                </svg>
+                <div class="recipe-ingredients__quantity">${
+                  ing.quantity === null ? '' : ing.quantity
+                }</div>
+                <span class="recipe-ingredients__unit">${ing.unit}</span>
+              </div>
+
+              <div class="recipe-ingredients__description">${
+                ing.description
+              }</div>  
+            </li>
+          `;
+          })
+          .join('')}
+      </ul>
+
+      <div class="recipe-ingredients__directions">
+        <h3 class="recipe-ingredients__title heading-tertiary">
+          How to cook it
+        </h3>
+
+        <p class="recipe-ingredients-text">
+          This recipe was carefully designed and tested by
+          <span class="recipe-ingredients__publisher">${
+            state.searchByID.recipe.publisher
+          }</span
+          >. Please check out directions at their website.
+        </p>
+
+        <a href="${
+          state.searchByID.recipe.directions
+        }" class="btn-link noSelect" target="_blank">
+          <span>Directions</span>
+          <svg class="icon recipe-ingredients__icon-arrow-right">
+            <use xlink:href="src/img/sprite.svg#icon-arrow-right"></use>
+          </svg>
+        </a>
+      </div>
+    </div>
+  `;
+
+  if (el.querySelector('.recipe-ingredients') === null)
+    container.insertAdjacentHTML('beforeend', recInfoMarkup);
+};
+
+const showRecipeInfo = async function (handlerQuery, id, el) {
+  // 1) load query
+  await handlerQuery(id);
+
+  // 2) render info
+  renderRecInfo(el);
+};
+
+// recImage.addEventListener('click', () => {
+//   showRecipeInfo(getQueryByID, '5ed6604591c37cdc054bca10');
+// });
 
 /***************************************
  ***********> HELPERS
@@ -36,6 +128,10 @@ const state = {
     results: undefined, // this will be a number
     recipes: [],
   },
+  searchByID: {
+    status: undefined, // this will be a string
+    recipe: {},
+  },
   storage: localStorage,
   randomRecipe: [],
 };
@@ -43,7 +139,7 @@ const state = {
 const getSearchQuery = async function (id, handler) {
   try {
     handler();
-    const res = await fetch(`${SearchAJAX}?search=${id}`);
+    const res = await fetch(`${searchAJAX}?search=${id}`);
     const resData = await res.json();
     const { recipes } = resData.data;
 
@@ -162,6 +258,7 @@ const renderRecipesBySearch = function (recipesArr, page, position) {
             class="recipe-container__image"
             id="recipe-image"
             alt="Recipe photo"
+            data-id="${recObj.id}"
           />
         </div>
 
@@ -191,7 +288,7 @@ const renderRandomRecipe = function () {
       <div class="recipe-container__image-container noSelect">
         <img
           src="${state.randomRecipe[0].imageUrl}"
-          class="recipe-container__image"
+          class="recipe-container__random-image"
           id="recipe-image"
           alt="Recipe photo"
         />
@@ -244,6 +341,8 @@ const searchView = function (handler) {
 
     // 3) clear the input
     clearInputField(headerInput);
+
+    // 4) events on image
   });
 
   document.addEventListener('keydown', async function (e) {
@@ -301,6 +400,18 @@ const controlSearchRecipes = function () {
       // 3) attaching event to button show more
       showMoreView();
     }
+
+    const recImages = document.querySelectorAll('.recipe-container__image');
+    recImages.forEach(img => {
+      img.addEventListener('click', function (e) {
+        const id = e.target.dataset.id;
+        const el = e.target.parentNode.parentNode.querySelector(
+          '.recipe-container__info'
+        );
+
+        showRecipeInfo(getQueryByID, id, el);
+      });
+    });
   }
 };
 

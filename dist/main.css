@@ -255,7 +255,7 @@
         fill: #f5f5f5;
         margin-left: 0.5rem; }
     .recipe-container__name {
-      max-width: 16rem;
+      max-width: 26rem;
       font-size: 1.4rem;
       font-weight: 600;
       text-overflow: ellipsis;
