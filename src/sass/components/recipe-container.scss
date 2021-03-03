@@ -153,14 +153,26 @@
       cursor: pointer;
     }
 
-    &__fav-icon-heart {
+    &__fav-icon-heart-inactive {
       height: 100%;
       width: 100%;
       fill: $color-grey-light;
       transition: all 0.2s;
     }
 
-    &__fav-icon-heart:active {
+    &__fav-icon-heart-active {
+      height: 100%;
+      width: 100%;
+      fill: $color-red;
+      transition: all 0.2s;
+    }
+
+    &__fav-icon-heart-inactive:active {
+      fill: $color-red;
+      @include clickAnimation;
+    }
+
+    &__fav-icon-heart-active:active {
       fill: $color-red;
       @include clickAnimation;
     }

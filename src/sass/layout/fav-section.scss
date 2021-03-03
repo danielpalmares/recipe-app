@@ -47,8 +47,13 @@
     }
 
     &__recipe-name {
+      max-height: 2rem;
       font-size: $font-size-tiny;
       font-weight: 700;
+
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
     }
 
     /* BUTTON */

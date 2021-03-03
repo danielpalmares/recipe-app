@@ -268,12 +268,20 @@
       background: none;
       outline: none;
       cursor: pointer; }
-    .recipe-container__fav-icon-heart {
+    .recipe-container__fav-icon-heart-inactive {
       height: 100%;
       width: 100%;
       fill: #ccc;
       transition: all 0.2s; }
-    .recipe-container__fav-icon-heart:active {
+    .recipe-container__fav-icon-heart-active {
+      height: 100%;
+      width: 100%;
+      fill: #ef233c;
+      transition: all 0.2s; }
+    .recipe-container__fav-icon-heart-inactive:active {
+      fill: #ef233c;
+      transform: translateY(0.25rem) scale(0.9); }
+    .recipe-container__fav-icon-heart-active:active {
       fill: #ef233c;
       transform: translateY(0.25rem) scale(0.9); }
     .recipe-container__random-text {
@@ -401,8 +409,12 @@
     .fav-section__recipe-image:active {
       transform: translateY(0rem) scale(0.9); }
     .fav-section__recipe-name {
+      max-height: 2rem;
       font-size: 1.1rem;
-      font-weight: 700; }
+      font-weight: 700;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap; }
     .fav-section__remove-fav-button {
       width: 2.5rem;
       height: 2.5rem;
