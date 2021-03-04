@@ -28,7 +28,6 @@
 ## Screenshots
 
 ![Layout](https://github.com/danielpalmares/recipe-app/blob/main/src/img/PicsArt_03-04-01.04.27.jpg)
-![Layout](https://github.com/danielpalmares/recipe-app/blob/main/src/img/PicsArt_03-04-01.05.37.jpg)
 
 ---
 
