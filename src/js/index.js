@@ -29,34 +29,6 @@ okBtn.addEventListener('click', function (e) {
   popup.classList.add('hidden');
 });
 
-const removeFavRecipe = function () {
-  const favSection = document.querySelector('.fav-section');
-
-  if (favSection.querySelector('.fav-section__recipe-container') !== null) {
-    favSection.addEventListener('click', function (e) {
-      const target = e.target;
-
-      if (target.classList.contains('fav-section__remove-fav-icon-cross')) {
-        const img = target.parentNode.parentNode.querySelector(
-          '.fav-section__recipe-image'
-        );
-        const imgID = img.dataset.id;
-
-        const strFromLS = state.storage.getItem('recipesID');
-        const strFromLSParsed = JSON.parse(strFromLS);
-
-        let arr = strFromLSParsed === null ? [] : strFromLSParsed;
-        let newArr = [];
-
-        newArr = arr.filter(rec => rec.recID !== imgID);
-
-        state.storage.setItem('recipesID', JSON.stringify(newArr));
-        location.reload();
-      }
-    });
-  } else return;
-};
-
 /***************************************
  ***********> HELPERS
  ***************************************/
@@ -474,6 +446,34 @@ window.addEventListener('load', async function () {
   await getRandomQuery();
   renderRandomRecipe();
 });
+
+const removeFavRecipe = function () {
+  const favSection = document.querySelector('.fav-section');
+
+  if (favSection.querySelector('.fav-section__recipe-container') !== null) {
+    favSection.addEventListener('click', function (e) {
+      const target = e.target;
+
+      if (target.classList.contains('fav-section__remove-fav-icon-cross')) {
+        const img = target.parentNode.parentNode.querySelector(
+          '.fav-section__recipe-image'
+        );
+        const imgID = img.dataset.id;
+
+        const strFromLS = state.storage.getItem('recipesID');
+        const strFromLSParsed = JSON.parse(strFromLS);
+
+        let arr = strFromLSParsed === null ? [] : strFromLSParsed;
+        let newArr = [];
+
+        newArr = arr.filter(rec => rec.recID !== imgID);
+
+        state.storage.setItem('recipesID', JSON.stringify(newArr));
+        location.reload();
+      }
+    });
+  } else return;
+};
 
 bodyEl.addEventListener('click', function (e) {
   e.preventDefault();
