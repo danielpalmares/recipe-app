@@ -65,9 +65,9 @@ $ npm run scss
 
 If you don't have the Live Server extension installed, this link is for you [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
 
-## Tool
+## Tools
 
-These tool were used in the project:
+These tools were used in the project:
 
 - [HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML)
 - [SASS](https://sass-lang.com/)
