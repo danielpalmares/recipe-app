@@ -17,6 +17,46 @@ const bodyEl = document.getElementsByTagName('body')[0];
 const afterBegin = 'afterbegin';
 const beforeEnd = 'beforeend';
 
+const closePopupBtn = document.querySelector('.custom-card__close-button');
+const popup = document.querySelector('.custom-card');
+const okBtn = document.querySelector('.custom-card__start-button');
+
+closePopupBtn.addEventListener('click', function (e) {
+  popup.classList.add('hidden');
+});
+
+okBtn.addEventListener('click', function (e) {
+  popup.classList.add('hidden');
+});
+
+const removeFavRecipe = function () {
+  const favSection = document.querySelector('.fav-section');
+
+  if (favSection.querySelector('.fav-section__recipe-container') !== null) {
+    favSection.addEventListener('click', function (e) {
+      const target = e.target;
+
+      if (target.classList.contains('fav-section__remove-fav-icon-cross')) {
+        const img = target.parentNode.parentNode.querySelector(
+          '.fav-section__recipe-image'
+        );
+        const imgID = img.dataset.id;
+
+        const strFromLS = state.storage.getItem('recipesID');
+        const strFromLSParsed = JSON.parse(strFromLS);
+
+        let arr = strFromLSParsed === null ? [] : strFromLSParsed;
+        let newArr = [];
+
+        newArr = arr.filter(rec => rec.recID !== imgID);
+
+        state.storage.setItem('recipesID', JSON.stringify(newArr));
+        location.reload();
+      }
+    });
+  } else return;
+};
+
 /***************************************
  ***********> HELPERS
  ***************************************/
@@ -333,29 +373,25 @@ const renderRandomRecipe = function () {
           class="recipe-container__random-image"
           id="recipe-image"
           alt="Recipe photo"
+          data-id="${state.randomRecipe[0].id}"
         />
+
+        <div class="recipe-container__random-text">
+          <span class="recipe-container__text">Random recipe</span>
+        </div>
       </div>
 
       <div class="recipe-container__info">
         <div class="recipe-container__name-fav">
           <span class="recipe-container__name">${state.randomRecipe[0].name}</span>
-
-          <button class="recipe-container__fav-button noSelect">
-            <svg class="icon recipe-container__fav-icon-heart-inactive">
-              <use xlink:href="src/img/sprite.svg#icon-heart" class="svg-path"></use>
-            </svg>
-          </button>
         </div>
-      </div>
-
-      <div class="recipe-container__random-text">
-        <span class="recipe-container__text">Random recipe</span>
-      </div>
+      </div>      
     </div>
   `;
 
-  mainSection.innerHTML = '';
-  mainSection.insertAdjacentHTML('afterbegin', randomRecipeMarkup);
+  mainSection.insertAdjacentHTML('beforeend', randomRecipeMarkup);
+
+  showRandomRecInfo();
 };
 
 const renderSingleFavRec = function (obj) {
@@ -388,6 +424,7 @@ const renderSingleFavRec = function (obj) {
     favSection.removeChild(msg);
   }
   favSection.insertAdjacentHTML('afterbegin', favMarkup);
+  removeFavRecipe();
 };
 
 const renderFavRecipes = function () {
@@ -397,7 +434,6 @@ const renderFavRecipes = function () {
   const arr = JSON.parse(localStorage.getItem('recipesID'));
 
   if (arr === null) return;
-  console.log(arr);
 
   arr.map(rec => {
     const favMarkup = `
@@ -427,6 +463,7 @@ const renderFavRecipes = function () {
       favSection.removeChild(msg);
     }
     favSection.insertAdjacentHTML('afterbegin', favMarkup);
+    removeFavRecipe();
   });
 };
 
@@ -438,7 +475,7 @@ window.addEventListener('load', async function () {
   renderRandomRecipe();
 });
 
-bodyEl.addEventListener('click', async function (e) {
+bodyEl.addEventListener('click', function (e) {
   e.preventDefault();
   const target = e.target;
   const icon = e.target.parentNode;
@@ -454,7 +491,7 @@ bodyEl.addEventListener('click', async function (e) {
 
       icon.classList.add('recipe-container__fav-icon-heart-active');
     }
-  } else return;
+  }
 });
 
 const showRecipeInfo = async function (handlerQuery, id, el) {
@@ -475,7 +512,6 @@ const searchView = function (handler) {
 
     // 1) fetch the data and put it in the state
     await handler(headerInput.value, renderSpinner);
-    console.log(state.search.recipes);
 
     // 2) render the data from state
     controlSearchRecipes();
@@ -555,11 +591,55 @@ const showRecInfo = function () {
         '.recipe-container__info'
       );
 
-      const ingContainer = document.querySelector('.recipe-ingredients');
-      if (ingContainer === null) showRecipeInfo(getQueryByID, id, el);
-      else ingContainer.parentNode.removeChild(ingContainer);
+      const imgContainer = document.querySelector('.recipe-ingredients');
+      if (imgContainer === null) showRecipeInfo(getQueryByID, id, el);
+      else imgContainer.parentNode.removeChild(imgContainer);
     });
   });
+};
+
+const showRandomRecInfo = function () {
+  const recImage = document.querySelector('.recipe-container__random-image');
+
+  recImage.addEventListener('click', function (e) {
+    const el = e.target.parentNode.parentNode.querySelector(
+      '.recipe-container__info'
+    );
+
+    const imgContainer = document.querySelector('.recipe-ingredients');
+    if (imgContainer === null) renderRandomRecInfo(el);
+    else imgContainer.parentNode.removeChild(imgContainer);
+  });
+};
+
+const renderRandomRecInfo = function (el) {
+  const container = el;
+
+  const recInfoMarkup = `
+    <div class="recipe-ingredients">
+      <div class="recipe-ingredients__directions">
+        <h3 class="recipe-ingredients__title heading-tertiary">
+          How to cook it
+        </h3>
+
+        <p class="recipe-ingredients-text">
+          This recipe was carefully designed and tested by
+          <span class="recipe-ingredients__publisher">Check directions</span
+          >. Please check out directions at their website.
+        </p>
+
+        <a href="${state.randomRecipe[0].directions}" class="btn-link noSelect" target="_blank">
+          <span>Directions</span>
+          <svg class="icon recipe-ingredients__icon-arrow-right">
+            <use xlink:href="src/img/sprite.svg#icon-arrow-right"></use>
+          </svg>
+        </a>
+      </div>
+    </div>
+  `;
+
+  if (el.querySelector('.recipe-ingredients') === null)
+    container.insertAdjacentHTML('beforeend', recInfoMarkup);
 };
 
 const init = function () {

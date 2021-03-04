@@ -8,7 +8,6 @@
     justify-content: space-evenly;
     align-items: center;
 
-    &__list-button,
     &__search-button {
       height: 3rem;
       width: 3rem;
@@ -19,7 +18,7 @@
     }
 
     &__search-input {
-      width: 18rem;
+      width: 17rem;
       font-family: 'Poppins', sans-serif;
       font-size: $font-size-medium;
       font-weight: 400;
@@ -32,10 +31,11 @@
       transition: all 0.2s;
     }
 
-    &__search-input:hover,
     &__search-input:focus {
-      @include animation(borderIn, 1s, forwards);
+      @include animation(borderIn, 2s, forwards);
       @include shadow;
+      transform: scale(1.05);
+      width: 23rem;
     }
 
     &__search-input::placeholder {
@@ -43,7 +43,6 @@
       color: $color-grey-light;
     }
 
-    &__icon-list,
     &__icon-magnifying-glass {
       height: 100%;
       width: 100%;
@@ -51,7 +50,6 @@
       transition: all 0.2s;
     }
 
-    &__icon-list:active,
     &__icon-magnifying-glass:active {
       @include clickAnimation;
     }

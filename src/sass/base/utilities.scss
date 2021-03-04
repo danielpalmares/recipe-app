@@ -9,36 +9,6 @@
   user-select: none;
 }
 
-/* FLOATING BUTTON */
-.create-recipe {
-  position: fixed;
-  top: 88%;
-  right: 2%;
-  z-index: 90;
-
-  &__button {
-    width: 4rem;
-    height: 4rem;
-    @include bgGradient;
-
-    border: 0.3rem solid $color-white-light-secondary;
-    outline: none;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-
-  &__button:active {
-    @include clickAnimation;
-  }
-
-  &__icon-plus {
-    width: 100%;
-    height: 100%;
-    fill: $color-white-light-secondary;
-  }
-}
-
 .btn-link:link,
 .btn-link:visited {
   width: 15rem;
@@ -68,8 +38,4 @@
 
 .hidden {
   display: none;
-}
-
-.activeFlex {
-  display: flex;
 }
