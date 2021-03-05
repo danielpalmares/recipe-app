@@ -51,7 +51,9 @@ const removeFavRecipe = function () {
         newArr = arr.filter(rec => rec.recID !== imgID);
 
         state.storage.setItem('recipesID', JSON.stringify(newArr));
-        location.reload();
+
+        favSection.innerHTML = '';
+        renderFavRecipes();
       }
     });
   } else return;
@@ -400,12 +402,11 @@ const renderSingleFavRec = function (obj) {
   const favMarkup = `
     <div class="fav-section__recipe-container noSelect">
       <div class="fav-section__recipe-image-container">
-        <a href="${obj.direction}" target="_blank">
-          <img
-            src="${obj.image}"
-            class="fav-section__recipe-image"
-            alt="Recipe photo"
-            data-id="${obj.recID}"
+        <a href="${obj.direction}" target="_blank"><img
+          src="${obj.image}"
+          class="fav-section__recipe-image"
+          alt="Recipe photo"
+          data-id="${obj.recID}"
           />
         </a>
     
@@ -439,12 +440,11 @@ const renderFavRecipes = function () {
     const favMarkup = `
       <div class="fav-section__recipe-container noSelect">
         <div class="fav-section__recipe-image-container">
-          <a href="${rec.direction}" target="_blank">
-            <img
-              src="${rec.image}"
-              class="fav-section__recipe-image"
-              alt="Recipe photo"
-              data-id="${rec.recID}"
+          <a href="${rec.direction}" target="_blank"><img 
+            src="${rec.image}"
+            class="fav-section__recipe-image"
+            alt="Recipe photo"
+            data-id="${rec.recID}"
             />
           </a>
     
