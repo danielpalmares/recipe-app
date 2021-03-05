@@ -29,36 +29,6 @@ okBtn.addEventListener('click', function (e) {
   popup.classList.add('hidden');
 });
 
-const removeFavRecipe = function () {
-  const favSection = document.querySelector('.fav-section');
-
-  if (favSection.querySelector('.fav-section__recipe-container') !== null) {
-    favSection.addEventListener('click', function (e) {
-      const target = e.target;
-
-      if (target.classList.contains('fav-section__remove-fav-icon-cross')) {
-        const img = target.parentNode.parentNode.querySelector(
-          '.fav-section__recipe-image'
-        );
-        const imgID = img.dataset.id;
-
-        const strFromLS = state.storage.getItem('recipesID');
-        const strFromLSParsed = JSON.parse(strFromLS);
-
-        let arr = strFromLSParsed === null ? [] : strFromLSParsed;
-        let newArr = [];
-
-        newArr = arr.filter(rec => rec.recID !== imgID);
-
-        state.storage.setItem('recipesID', JSON.stringify(newArr));
-
-        favSection.innerHTML = '';
-        renderFavRecipes();
-      }
-    });
-  } else return;
-};
-
 /***************************************
  ***********> HELPERS
  ***************************************/
@@ -402,11 +372,12 @@ const renderSingleFavRec = function (obj) {
   const favMarkup = `
     <div class="fav-section__recipe-container noSelect">
       <div class="fav-section__recipe-image-container">
-        <a href="${obj.direction}" target="_blank"><img
-          src="${obj.image}"
-          class="fav-section__recipe-image"
-          alt="Recipe photo"
-          data-id="${obj.recID}"
+        <a href="${obj.direction}" target="_blank">
+          <img
+            src="${obj.image}"
+            class="fav-section__recipe-image"
+            alt="Recipe photo"
+            data-id="${obj.recID}"
           />
         </a>
     
@@ -440,11 +411,12 @@ const renderFavRecipes = function () {
     const favMarkup = `
       <div class="fav-section__recipe-container noSelect">
         <div class="fav-section__recipe-image-container">
-          <a href="${rec.direction}" target="_blank"><img 
-            src="${rec.image}"
-            class="fav-section__recipe-image"
-            alt="Recipe photo"
-            data-id="${rec.recID}"
+          <a href="${rec.direction}" target="_blank">
+            <img 
+              src="${rec.image}"
+              class="fav-section__recipe-image"
+              alt="Recipe photo"
+              data-id="${rec.recID}"
             />
           </a>
     
@@ -474,6 +446,36 @@ window.addEventListener('load', async function () {
   await getRandomQuery();
   renderRandomRecipe();
 });
+
+const removeFavRecipe = function () {
+  const favSection = document.querySelector('.fav-section');
+
+  if (favSection.querySelector('.fav-section__recipe-container') !== null) {
+    favSection.addEventListener('click', function (e) {
+      const target = e.target;
+
+      if (target.classList.contains('fav-section__remove-fav-icon-cross')) {
+        const img = target.parentNode.parentNode.querySelector(
+          '.fav-section__recipe-image'
+        );
+        const imgID = img.dataset.id;
+
+        const strFromLS = state.storage.getItem('recipesID');
+        const strFromLSParsed = JSON.parse(strFromLS);
+
+        let arr = strFromLSParsed === null ? [] : strFromLSParsed;
+        let newArr = [];
+
+        newArr = arr.filter(rec => rec.recID !== imgID);
+
+        state.storage.setItem('recipesID', JSON.stringify(newArr));
+
+        favSection.innerHTML = '';
+        renderFavRecipes();
+      }
+    });
+  } else return;
+};
 
 bodyEl.addEventListener('click', function (e) {
   e.preventDefault();
