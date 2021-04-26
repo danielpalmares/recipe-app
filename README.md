@@ -34,6 +34,7 @@
 ## Status
 
 Final version done! ☄️
+
 Requires improvements for larger screen sizes
 
 ## Pre-requirements
