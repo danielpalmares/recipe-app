@@ -1,4 +1,5 @@
-import '../sass/main.scss';
+import 'regenerator-runtime/runtime';
+import 'core-js/stable';
 
 /***************************************
  ***********> CONFIG VARIABLES
@@ -195,7 +196,7 @@ const insertButton = function () {
       <button class="show-more__button noSelect">
         <span class="show-more__text">Show more</span>
         <svg class="icon show-more__icon-chevron">
-          <use xlink:href="src/img/sprite.svg#icon-arrow-down"></use>
+          <use xlink:href="./img/sprite.svg#icon-arrow-down"></use>
         </svg>
       </button>
     </div>
@@ -217,7 +218,7 @@ const renderNoRecMsg = function () {
         No recipes found for your query! Please try again.
       </span>
       <svg class="icon search-message__message-icon-happy">
-        <use xlink:href="src/img/sprite.svg#icon-frown"></use>
+        <use xlink:href="./img/sprite.svg#icon-frown"></use>
       </svg>
     </div>
   `;
@@ -261,7 +262,7 @@ const renderRecipesBySearch = function (recipesArr, page, position) {
                   ? 'icon recipe-container__fav-icon-heart-inactive'
                   : 'icon recipe-container__fav-icon-heart-active'
               }">
-                <use xlink:href="src/img/sprite.svg#icon-heart" class="svg-path"></use>
+                <use xlink:href="./img/sprite.svg#icon-heart" class="svg-path"></use>
               </svg>
             </button>
           </div>
@@ -290,7 +291,7 @@ const renderRecInfo = function (el) {
             <li class="recipe-ingredients__ingredient">
               <div class="recipe-ingredients__wrapper">
                 <svg class="icon recipe-ingredients__icon-check">
-                  <use xlink:href="src/img/sprite.svg#icon-check"></use>
+                  <use xlink:href="./img/sprite.svg#icon-check"></use>
                 </svg>
                 <div class="recipe-ingredients__quantity">${
                   ing.quantity === null ? '' : ing.quantity
@@ -325,7 +326,7 @@ const renderRecInfo = function (el) {
         }" class="btn-link noSelect" target="_blank">
           <span>Directions</span>
           <svg class="icon recipe-ingredients__icon-arrow-right">
-            <use xlink:href="src/img/sprite.svg#icon-arrow-right"></use>
+            <use xlink:href="./img/sprite.svg#icon-arrow-right"></use>
           </svg>
         </a>
       </div>
@@ -385,7 +386,7 @@ const renderSingleFavRec = function (obj) {
     
         <button class="fav-section__remove-fav-button noSelect">
           <svg class="icon fav-section__remove-fav-icon-cross">
-            <use xlink:href="src/img/sprite.svg#icon-x"></use>
+            <use xlink:href="./img/sprite.svg#icon-x"></use>
           </svg>
         </button>
       </div>
@@ -424,7 +425,7 @@ const renderFavRecipes = function () {
     
           <button class="fav-section__remove-fav-button noSelect">
             <svg class="icon fav-section__remove-fav-icon-cross">
-              <use xlink:href="src/img/sprite.svg#icon-x"></use>
+              <use xlink:href="./img/sprite.svg#icon-x"></use>
             </svg>
           </button>
         </div>
@@ -635,7 +636,7 @@ const renderRandomRecInfo = function (el) {
         <a href="${state.randomRecipe[0].directions}" class="btn-link noSelect" target="_blank">
           <span>Directions</span>
           <svg class="icon recipe-ingredients__icon-arrow-right">
-            <use xlink:href="src/img/sprite.svg#icon-arrow-right"></use>
+            <use xlink:href="./img/sprite.svg#icon-arrow-right"></use>
           </svg>
         </a>
       </div>
