@@ -1,5 +1,8 @@
 import 'regenerator-runtime/runtime';
 import 'core-js/stable';
+import * as model from './model';
+
+import RenderRandomRecipe from './views/renderRandomRecipe';
 
 /***************************************
  ***********> CONFIG VARIABLES
@@ -35,24 +38,24 @@ okBtn.addEventListener('click', function (e) {
 /***************************************
  ***********> HELPERS
  ***************************************/
-const sliceRecipes = function (recipeArr, start, end) {
-  const recipesSliced = recipeArr.slice(start, end);
-  return recipesSliced;
-};
+// const sliceRecipes = function (recipeArr, start, end) {
+//   const recipesSliced = recipeArr.slice(start, end);
+//   return recipesSliced;
+// };
 
-const clearInputField = function (inputEl) {
-  inputEl.value = '';
-};
+// const clearInputField = function (inputEl) {
+//   inputEl.value = '';
+// };
 
-const isIDinLocalStorage = function (id) {
-  const strFromLS = state.storage.getItem('recipesID');
-  const strFromLSParsed = JSON.parse(strFromLS);
-  let arr = strFromLSParsed === null ? [] : strFromLSParsed;
+// const isIDinLocalStorage = function (id) {
+//   const strFromLS = state.storage.getItem('recipesID');
+//   const strFromLSParsed = JSON.parse(strFromLS);
+//   let arr = strFromLSParsed === null ? [] : strFromLSParsed;
 
-  const checkID = arr.some(obj => obj.recID === id);
+//   const checkID = arr.some(obj => obj.recID === id);
 
-  return checkID;
-};
+//   return checkID;
+// };
 
 /***************************************
  ***********> MODEL
@@ -175,20 +178,20 @@ const getRandomQuery = async function () {
 /***************************************
  ***********> VIEW
  ***************************************/
-const renderSpinner = function () {
-  const spinnerMarkup = `
-    <div class="spinner">
-      <div class="spinner__in"></div>
-    </div> 
-  `;
-  recipeSection.innerHTML = '';
-  recipeSection.insertAdjacentHTML(afterBegin, spinnerMarkup);
-};
+// const renderSpinner = function () {
+//   const spinnerMarkup = `
+//     <div class="spinner">
+//       <div class="spinner__in"></div>
+//     </div>
+//   `;
+//   recipeSection.innerHTML = '';
+//   recipeSection.insertAdjacentHTML(afterBegin, spinnerMarkup);
+// };
 
-const removeSpinner = function () {
-  const spinnerEl = document.querySelector('.spinner');
-  spinnerEl.parentNode.removeChild(spinnerEl);
-};
+// const removeSpinner = function () {
+//   const spinnerEl = document.querySelector('.spinner');
+//   spinnerEl.parentNode.removeChild(spinnerEl);
+// };
 
 const insertButton = function () {
   const btnMarkup = `
@@ -274,68 +277,68 @@ const renderRecipesBySearch = function (recipesArr, page, position) {
   });
 };
 
-const renderRecInfo = function (el) {
-  const container = el;
-  const ingredients = state.searchByID.recipe.ingredients;
+// const renderRecInfo = function (el) {
+//   const container = el;
+//   const ingredients = state.searchByID.recipe.ingredients;
 
-  const recInfoMarkup = `
-    <div class="recipe-ingredients">
-      <h3 class="heading-tertiary recipe-ingredients__title">
-        Recipe ingredients
-      </h3>
+//   const recInfoMarkup = `
+//     <div class="recipe-ingredients">
+//       <h3 class="heading-tertiary recipe-ingredients__title">
+//         Recipe ingredients
+//       </h3>
 
-      <ul class="recipe-ingredients__list">
-        ${ingredients
-          .map(ing => {
-            return `
-            <li class="recipe-ingredients__ingredient">
-              <div class="recipe-ingredients__wrapper">
-                <svg class="icon recipe-ingredients__icon-check">
-                  <use xlink:href="./img/sprite.svg#icon-check"></use>
-                </svg>
-                <div class="recipe-ingredients__quantity">${
-                  ing.quantity === null ? '' : ing.quantity
-                }</div>
-                <span class="recipe-ingredients__unit">${ing.unit}</span>
-              </div>
+//       <ul class="recipe-ingredients__list">
+//         ${ingredients
+//           .map(ing => {
+//             return `
+//             <li class="recipe-ingredients__ingredient">
+//               <div class="recipe-ingredients__wrapper">
+//                 <svg class="icon recipe-ingredients__icon-check">
+//                   <use xlink:href="./img/sprite.svg#icon-check"></use>
+//                 </svg>
+//                 <div class="recipe-ingredients__quantity">${
+//                   ing.quantity === null ? '' : ing.quantity
+//                 }</div>
+//                 <span class="recipe-ingredients__unit">${ing.unit}</span>
+//               </div>
 
-              <div class="recipe-ingredients__description">${
-                ing.description
-              }</div>  
-            </li>
-          `;
-          })
-          .join('')}
-      </ul>
+//               <div class="recipe-ingredients__description">${
+//                 ing.description
+//               }</div>
+//             </li>
+//           `;
+//           })
+//           .join('')}
+//       </ul>
 
-      <div class="recipe-ingredients__directions">
-        <h3 class="recipe-ingredients__title heading-tertiary">
-          How to cook it
-        </h3>
+//       <div class="recipe-ingredients__directions">
+//         <h3 class="recipe-ingredients__title heading-tertiary">
+//           How to cook it
+//         </h3>
 
-        <p class="recipe-ingredients-text">
-          This recipe was carefully designed and tested by
-          <span class="recipe-ingredients__publisher">${
-            state.searchByID.recipe.publisher
-          }</span
-          >. Please check out directions at their website.
-        </p>
+//         <p class="recipe-ingredients-text">
+//           This recipe was carefully designed and tested by
+//           <span class="recipe-ingredients__publisher">${
+//             state.searchByID.recipe.publisher
+//           }</span
+//           >. Please check out directions at their website.
+//         </p>
 
-        <a href="${
-          state.searchByID.recipe.directions
-        }" class="btn-link noSelect" target="_blank">
-          <span>Directions</span>
-          <svg class="icon recipe-ingredients__icon-arrow-right">
-            <use xlink:href="./img/sprite.svg#icon-arrow-right"></use>
-          </svg>
-        </a>
-      </div>
-    </div>
-  `;
+//         <a href="${
+//           state.searchByID.recipe.directions
+//         }" class="btn-link noSelect" target="_blank">
+//           <span>Directions</span>
+//           <svg class="icon recipe-ingredients__icon-arrow-right">
+//             <use xlink:href="./img/sprite.svg#icon-arrow-right"></use>
+//           </svg>
+//         </a>
+//       </div>
+//     </div>
+//   `;
 
-  if (el.querySelector('.recipe-ingredients') === null)
-    container.insertAdjacentHTML('beforeend', recInfoMarkup);
-};
+//   if (el.querySelector('.recipe-ingredients') === null)
+//     container.insertAdjacentHTML('beforeend', recInfoMarkup);
+// };
 
 const renderRandomRecipe = function () {
   const mainSection = document.querySelector('.main-section');
@@ -445,10 +448,115 @@ const renderFavRecipes = function () {
 /***************************************
  ***********> CONTROLLER
  ***************************************/
-window.addEventListener('load', async function () {
-  await getRandomQuery();
-  renderRandomRecipe();
+import RenderRandomRecipe from './views/renderRandomRecipe';
+import RenderRecipesView from './views/renderRecipesView';
+import * as model from './model';
+import * as config from './config';
+import { view } from './views/view';
+
+function controlFavoriteRecipes() {}
+
+async function controlRandomRecipe() {
+  // fetch random recipe
+  await model.fetchRandomRecipe();
+
+  // render random recipe
+  new RenderRandomRecipe(model.state.randomRecipe);
+}
+
+async function controlRecipes(ev) {
+  ev.preventDefault();
+
+  if (!view.headerSearchInput.value) return;
+
+  // remove show more button
+  view.removeElement(view.showMoreButton);
+
+  // render spinner
+  view.renderSpinner();
+
+  // fetch the data and put it in the state
+  await model.fetchRecipes(view.headerSearchInput.value);
+
+  // stop spinner
+  view.removeElement(view.spinner);
+
+  // clear the input
+  view.headerSearchInput.value = '';
+  view.headerSearchInput.blur();
+
+  // rendering recipes
+  if (model.state.search.results > 0) {
+    new RenderRecipesView(model.state.search.recipes, config.startPage);
+
+    // 2) inserting button
+    if (document.querySelector('.show-more') === null) {
+      insertButton();
+      // 3) attaching event to button show more
+      showMoreView();
+    }
+
+    // 4) showing recipe information
+    showRecInfo();
+  } else {
+    removeSpinner();
+    renderNoRecMsg();
+  }
+}
+
+['click', 'keydown'].forEach((evType, index) => {
+  index === 1 &&
+    view.headerSearchButton.addEventListener(evType, controlRecipes.bind(this));
+
+  index === 2 &&
+    document.addEventListener(
+      evType,
+      ev => ev.key === 'Enter' && controlRecipes()
+    );
 });
+
+// const searchView = function (handler) {
+//   headerSearchBtn.addEventListener('click', async function (e) {
+//     e.preventDefault();
+//     page = 1;
+//     resPerPage = 10;
+
+//     removeBtn();
+
+//     // 1) fetch the data and put it in the state
+//     await handler(headerInput.value, renderSpinner);
+
+//     // 2) render the data from state
+//     controlSearchRecipes();
+
+//     // 3) clear the input
+//     clearInputField(headerInput);
+//   });
+
+//   document.addEventListener('keydown', async function (e) {
+//     const keyName = e.key;
+
+//     if (keyName === 'Enter') {
+//       e.preventDefault();
+//       page = 1;
+//       resPerPage = 10;
+
+//       removeBtn();
+
+//       // 1) fetch the data and put it in the state
+//       await handler(headerInput.value, renderSpinner);
+
+//       // 2) render the data from state
+//       controlSearchRecipes();
+
+//       // 3) clear the input
+//       clearInputField(headerInput);
+
+//       //4 blurring the input
+//       headerInput.blur();
+//     }
+//   });
+// };
 
 const removeFavRecipe = function () {
   const favSection = document.querySelector('.fav-section');
@@ -507,49 +615,6 @@ const showRecipeInfo = async function (handlerQuery, id, el) {
   renderRecInfo(el);
 };
 
-const searchView = function (handler) {
-  headerSearchBtn.addEventListener('click', async function (e) {
-    e.preventDefault();
-    page = 1;
-    resPerPage = 10;
-
-    removeBtn();
-
-    // 1) fetch the data and put it in the state
-    await handler(headerInput.value, renderSpinner);
-
-    // 2) render the data from state
-    controlSearchRecipes();
-
-    // 3) clear the input
-    clearInputField(headerInput);
-  });
-
-  document.addEventListener('keydown', async function (e) {
-    const keyName = e.key;
-
-    if (keyName === 'Enter') {
-      e.preventDefault();
-      page = 1;
-      resPerPage = 10;
-
-      removeBtn();
-
-      // 1) fetch the data and put it in the state
-      await handler(headerInput.value, renderSpinner);
-
-      // 2) render the data from state
-      controlSearchRecipes();
-
-      // 3) clear the input
-      clearInputField(headerInput);
-
-      //4 blurring the input
-      headerInput.blur();
-    }
-  });
-};
-
 const showMoreView = function () {
   const btnShowMore = document.querySelector('.show-more__button');
 
@@ -563,28 +628,6 @@ const showMoreView = function () {
 
     if (resPerPage >= state.search.results) removeBtn();
   });
-};
-
-const controlSearchRecipes = function () {
-  // 1) rendering recipes
-  if (state.search.results === 0 || headerInput.value === '') {
-    removeSpinner();
-    renderNoRecMsg();
-  }
-  if (state.search.results > 0) {
-    removeSpinner();
-    renderRecipesBySearch(state.search.recipes, page, afterBegin);
-
-    // 2) inserting button
-    if (document.querySelector('.show-more') === null) {
-      insertButton();
-      // 3) attaching event to button show more
-      showMoreView();
-    }
-
-    // 4) showing recipe information
-    showRecInfo();
-  }
 };
 
 const showRecInfo = function () {
@@ -603,52 +646,53 @@ const showRecInfo = function () {
   });
 };
 
-const showRandomRecInfo = function () {
-  const recImage = document.querySelector('.recipe-container__random-image');
+// const showRandomRecInfo = function () {
+//   const recImage = document.querySelector('.recipe-container__random-image');
 
-  recImage.addEventListener('click', function (e) {
-    const el = e.target.parentNode.parentNode.querySelector(
-      '.recipe-container__info'
-    );
+//   recImage.addEventListener('click', function (e) {
+//     const el = e.target.parentNode.parentNode.querySelector(
+//       '.recipe-container__info'
+//     );
 
-    const imgContainer = document.querySelector('.recipe-ingredients');
-    if (imgContainer === null) renderRandomRecInfo(el);
-    else imgContainer.parentNode.removeChild(imgContainer);
-  });
-};
+//     const imgContainer = document.querySelector('.recipe-ingredients');
+//     if (imgContainer === null) renderRandomRecInfo(el);
+//     else imgContainer.parentNode.removeChild(imgContainer);
+//   });
+// };
 
-const renderRandomRecInfo = function (el) {
-  const container = el;
+// const renderRandomRecInfo = function (el) {
+//   const container = el;
 
-  const recInfoMarkup = `
-    <div class="recipe-ingredients">
-      <div class="recipe-ingredients__directions">
-        <h3 class="recipe-ingredients__title heading-tertiary">
-          How to cook it
-        </h3>
+//   const recInfoMarkup = `
+//     <div class="recipe-ingredients">
+//       <div class="recipe-ingredients__directions">
+//         <h3 class="recipe-ingredients__title heading-tertiary">
+//           How to cook it
+//         </h3>
 
-        <p class="recipe-ingredients-text">
-          This recipe was carefully designed and tested by
-          <span class="recipe-ingredients__publisher">Check directions</span
-          >. Please check out directions at their website.
-        </p>
+//         <p class="recipe-ingredients-text">
+//           This recipe was carefully designed and tested by
+//           <span class="recipe-ingredients__publisher">Check directions</span
+//           >. Please check out directions at their website.
+//         </p>
 
-        <a href="${state.randomRecipe[0].directions}" class="btn-link noSelect" target="_blank">
-          <span>Directions</span>
-          <svg class="icon recipe-ingredients__icon-arrow-right">
-            <use xlink:href="./img/sprite.svg#icon-arrow-right"></use>
-          </svg>
-        </a>
-      </div>
-    </div>
-  `;
+//         <a href="${state.randomRecipe[0].directions}" class="btn-link noSelect" target="_blank">
+//           <span>Directions</span>
+//           <svg class="icon recipe-ingredients__icon-arrow-right">
+//             <use xlink:href="./img/sprite.svg#icon-arrow-right"></use>
+//           </svg>
+//         </a>
+//       </div>
+//     </div>
+//   `;
 
-  if (el.querySelector('.recipe-ingredients') === null)
-    container.insertAdjacentHTML('beforeend', recInfoMarkup);
-};
+//   if (el.querySelector('.recipe-ingredients') === null)
+//     container.insertAdjacentHTML('beforeend', recInfoMarkup);
+// };
 
 const init = function () {
   renderFavRecipes();
+  controlRandomRecipe();
   searchView(getSearchQuery);
 };
 init();
